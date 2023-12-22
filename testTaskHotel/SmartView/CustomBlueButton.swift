@@ -1,5 +1,5 @@
 //
-//  CustomBlueButtom.swift
+//  CustomBlueButton.swift
 //  testTaskHotel
 //
 //  Created by Андрей Банин on 19.12.23..
@@ -9,7 +9,7 @@ import Foundation
 
 import UIKit
 
-final class CustomBlueButtom: UIButton {
+final class CustomBlueButton: UIButton {
     
     typealias Action = () -> Void
     
@@ -25,10 +25,12 @@ final class CustomBlueButtom: UIButton {
         super.init(frame: .zero)
         
         self.translatesAutoresizingMaskIntoConstraints = false
+        self.heightAnchor.constraint(equalToConstant: 48).isActive = true
         self.setTitle(title, for: .normal)
         self.setTitleColor(titleColor, for: .normal)
         self.backgroundColor = backgroundColor
         self.layer.cornerRadius = 10
+        self.titleLabel?.font = .nameTileFont
         
         addTarget(self, action: #selector(actionButton), for: .touchUpInside)
     }
