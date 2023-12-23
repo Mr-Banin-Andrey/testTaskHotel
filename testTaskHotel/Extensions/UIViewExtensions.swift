@@ -23,4 +23,11 @@ extension UIView {
         return self
     }
     
+    var underLineServiceView: UIView {
+        self.translatesAutoresizingMaskIntoConstraints = false
+        self.backgroundColor = .lineServiceColor
+        self.heightAnchor.constraint(equalToConstant: 1).isActive = true
+        return self
+    }
+    
 }

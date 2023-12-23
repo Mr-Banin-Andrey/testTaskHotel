@@ -24,8 +24,8 @@
 		9D7AA4632B331E5E00EEAC9A /* UIFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7AA4622B331E5E00EEAC9A /* UIFont.swift */; };
 		9D7AA4652B3336D200EEAC9A /* DescriptionHotelCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7AA4642B3336D200EEAC9A /* DescriptionHotelCell.swift */; };
 		9D7AA4682B33548100EEAC9A /* UIViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7AA4672B33548100EEAC9A /* UIViewExtensions.swift */; };
+		9DB6D8982B3720B300FA3C41 /* ImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DB6D8972B3720B300FA3C41 /* ImageCell.swift */; };
 		9DD9440F2B34B5960012D1D5 /* TTGTags in Frameworks */ = {isa = PBXBuildFile; productRef = 9DD9440E2B34B5960012D1D5 /* TTGTags */; };
-		9DD944112B34EA4A0012D1D5 /* ServicesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DD944102B34EA4A0012D1D5 /* ServicesView.swift */; };
 		9DD944152B34F60C0012D1D5 /* UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DD944142B34F60C0012D1D5 /* UIImage.swift */; };
 		9DD944172B34F6DF0012D1D5 /* ServiceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DD944162B34F6DF0012D1D5 /* ServiceCell.swift */; };
 		9DD944192B35091F0012D1D5 /* ServiceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DD944182B35091F0012D1D5 /* ServiceModel.swift */; };
@@ -51,7 +51,7 @@
 		9D7AA4622B331E5E00EEAC9A /* UIFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIFont.swift; sourceTree = "<group>"; };
 		9D7AA4642B3336D200EEAC9A /* DescriptionHotelCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionHotelCell.swift; sourceTree = "<group>"; };
 		9D7AA4672B33548100EEAC9A /* UIViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtensions.swift; sourceTree = "<group>"; };
-		9DD944102B34EA4A0012D1D5 /* ServicesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServicesView.swift; sourceTree = "<group>"; };
+		9DB6D8972B3720B300FA3C41 /* ImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCell.swift; sourceTree = "<group>"; };
 		9DD944142B34F60C0012D1D5 /* UIImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImage.swift; sourceTree = "<group>"; };
 		9DD944162B34F6DF0012D1D5 /* ServiceCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceCell.swift; sourceTree = "<group>"; };
 		9DD944182B35091F0012D1D5 /* ServiceModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceModel.swift; sourceTree = "<group>"; };
@@ -166,8 +166,8 @@
 		9D7AA44A2B318AC900EEAC9A /* SmartView */ = {
 			isa = PBXGroup;
 			children = (
+				9DB6D8992B373EDE00FA3C41 /* GalleryPhotoView */,
 				9D7AA44B2B318B6B00EEAC9A /* CustomBlueButton.swift */,
-				9D7AA45E2B31F13900EEAC9A /* GalleryPhotoView.swift */,
 				9D7AA45A2B31D5C300EEAC9A /* NameHotelAndLocationView.swift */,
 			);
 			path = SmartView;
@@ -189,7 +189,6 @@
 				9D7AA4562B318FDD00EEAC9A /* HotelViewController.swift */,
 				9D7AA45C2B31E38300EEAC9A /* TitleHotelHeader.swift */,
 				9DD944162B34F6DF0012D1D5 /* ServiceCell.swift */,
-				9DD944102B34EA4A0012D1D5 /* ServicesView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -200,6 +199,15 @@
 				9D7AA4672B33548100EEAC9A /* UIViewExtensions.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		9DB6D8992B373EDE00FA3C41 /* GalleryPhotoView */ = {
+			isa = PBXGroup;
+			children = (
+				9DB6D8972B3720B300FA3C41 /* ImageCell.swift */,
+				9D7AA45E2B31F13900EEAC9A /* GalleryPhotoView.swift */,
+			);
+			path = GalleryPhotoView;
 			sourceTree = "<group>";
 		};
 		9DD944122B34EAE00012D1D5 /* Model */ = {
@@ -296,12 +304,12 @@
 				9D7AA45B2B31D5C300EEAC9A /* NameHotelAndLocationView.swift in Sources */,
 				9DD944152B34F60C0012D1D5 /* UIImage.swift in Sources */,
 				9D7AA4322B3187F600EEAC9A /* SceneDelegate.swift in Sources */,
+				9DB6D8982B3720B300FA3C41 /* ImageCell.swift in Sources */,
 				9D7AA44C2B318B6B00EEAC9A /* CustomBlueButton.swift in Sources */,
 				9D7AA45D2B31E38300EEAC9A /* TitleHotelHeader.swift in Sources */,
 				9D7AA44E2B318D1200EEAC9A /* UIColor.swift in Sources */,
 				9D7AA4632B331E5E00EEAC9A /* UIFont.swift in Sources */,
 				9D7AA4612B320F0100EEAC9A /* HotelPhotosModel.swift in Sources */,
-				9DD944112B34EA4A0012D1D5 /* ServicesView.swift in Sources */,
 				9D7AA4542B318FCC00EEAC9A /* HotelView.swift in Sources */,
 				9D7AA4592B318FF000EEAC9A /* HotelViewModel.swift in Sources */,
 				9D7AA4652B3336D200EEAC9A /* DescriptionHotelCell.swift in Sources */,
@@ -453,8 +461,8 @@
 				INFOPLIST_FILE = testTaskHotel/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -463,9 +471,11 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "Banin-Andrey.testTaskHotel";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -481,8 +491,8 @@
 				INFOPLIST_FILE = testTaskHotel/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -491,9 +501,11 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "Banin-Andrey.testTaskHotel";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

@@ -10,13 +10,14 @@ import UIKit
 //MARK: - TitleHotelHeader
 
 final class TitleHotelHeader: UITableViewHeaderFooterView {
-    
     static let reuseID = "TitleHotelHeaderID"
     
     //MARK: Properties
     
+    private var mockImages: [UIImage] = [._1, ._2, ._3, ._4, ._5,._1, ._2, ._3, ._4, ._5,._1, ._2, ._3, ._4, ._5,._1, ._2, ._3, ._4,]
+    
     private lazy var backgroundHeader = UIView().backgroundViewCell
-    private lazy var galleryPhoto = GalleryPhotoView()
+    private lazy var galleryPhoto = GalleryPhotoView(images: mockImages)
     private lazy var nameHotel = NameHotelAndLocationView()
     
     private lazy var priceLabel: UILabel = {
@@ -49,8 +50,6 @@ final class TitleHotelHeader: UITableViewHeaderFooterView {
     }
     
     //MARK: Public methods
-    
-    
     
     //MARK: Private methods
     

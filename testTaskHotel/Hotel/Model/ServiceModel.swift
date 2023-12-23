@@ -8,20 +8,13 @@
 import UIKit
 
 struct ServiceModel {
-    let serviceImage: UIImage
-    let serviceTitle: String
-    let serviceExplanation: String
+    let image: UIImage
+    let title: String
+    let explanation: String
 }
 
-struct ArrayServices {
-    let array = [
-        ServiceModel(serviceImage: .emojiHappyImage, serviceTitle: "Удобства", serviceExplanation: "Самое необходимое"),
-        ServiceModel(serviceImage: .tickSquareImage, serviceTitle: "Что включено", serviceExplanation: "Самое необходимое"),
-        ServiceModel(serviceImage: .closeSquareImage, serviceTitle: "Что не включено", serviceExplanation: "Самое необходимое"),
-    ]
+extension ServiceModel {
+    static let сomfort = ServiceModel(image: .emojiHappyImage, title: "Удобства", explanation: "Самое необходимое")
+    static let whatIsIncluded = ServiceModel(image: .tickSquareImage, title: "Что включено", explanation: "Самое необходимое")
+    static let whatIsNotIncluded = ServiceModel(image: .closeSquareImage, title: "Что не включено", explanation: "Самое необходимое")
 }
-//func setupService(model: ServiceModel) {
-//    self.serviceImage.image =
-//    self.titleServiceLabel.text =
-//    self.explanationLabel.text =
-//}

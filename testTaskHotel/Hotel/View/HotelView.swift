@@ -41,6 +41,9 @@ final class HotelView: UIView {
     
     private lazy var lineView = UIView().lineViewTabBar
     
+    private var mockAdvantages = ["3-я линия", "Платный Wi-Fi в фойе", "30 км до аэропорта", "1 км до пляжа"]
+    private var mockDescriptionHotel = "Отель VIP-класса с собственными гольф полями. Высокий уровнь сервиса. Рекомендуем для респектабельного отдыха. Отель принимает гостей от 18 лет!"
+    
     //MARK: Initial
     
     init(delegate: HotelViewDelegate) {
@@ -58,7 +61,6 @@ final class HotelView: UIView {
     //MARK: Public methods
     
     
-    
     //MARK: Private methods
     
     private func setupUI() {
@@ -71,14 +73,14 @@ final class HotelView: UIView {
             self.tableView.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor, constant: 0),
             self.tableView.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor, constant: 0),
             
-            self.selectHotelButton.topAnchor.constraint(equalTo: self.tableView.bottomAnchor, constant: 12),
-            self.selectHotelButton.bottomAnchor.constraint(equalTo: self.safeAreaLayoutGuide.bottomAnchor, constant: 6),
-            self.selectHotelButton.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor, constant: 16),
-            self.selectHotelButton.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor, constant: -16),
-            
             self.lineView.topAnchor.constraint(equalTo: self.tableView.bottomAnchor, constant: 0),
             self.lineView.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor, constant: 0),
             self.lineView.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor, constant: 0),
+            
+            self.selectHotelButton.topAnchor.constraint(equalTo: self.tableView.bottomAnchor, constant: 12),
+            self.selectHotelButton.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor, constant: 16),
+            self.selectHotelButton.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor, constant: -16),
+            self.selectHotelButton.bottomAnchor.constraint(equalTo: self.safeAreaLayoutGuide.bottomAnchor, constant: -6),
         ])
     }
     
@@ -102,7 +104,8 @@ extension HotelView: UITableViewDataSource {
         guard
             let cell = tableView.dequeueReusableCell(withIdentifier: DescriptionHotelCell.reuseID, for: indexPath) as? DescriptionHotelCell
         else { return UITableViewCell() }
-                
+        
+        cell.setupCell(mockDescriptionHotel, mockAdvantages)
         return cell
     }
 }

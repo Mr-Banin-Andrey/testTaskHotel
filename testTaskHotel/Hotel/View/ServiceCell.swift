@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class ServiceCell: UITableViewCell {
+final class ServiceCell: UIView {
     
     static let reuseID = "ServiceCellID"
     
@@ -40,20 +40,14 @@ final class ServiceCell: UITableViewCell {
         return $0
     }(UIImageView())
     
-    private lazy var underLineView: UIImageView = {
-        $0.translatesAutoresizingMaskIntoConstraints = false
-        $0.backgroundColor = .lineServiceColor
-        $0.heightAnchor.constraint(equalToConstant: 1).isActive = true
-        return $0
-    }(UIImageView())
-    
     //MARK: Initial
     
-    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        super.init(style: style, reuseIdentifier: reuseIdentifier)
+    init(image: UIImage, title: String, explanation: String) {
+        super.init(frame: .zero)
+        self.serviceImage.image = image
+        self.titleServiceLabel.text = title
+        self.explanationLabel.text = explanation
         
-        self.backgroundColor = .clear
-        self.selectionStyle = .none
         self.setupUI()
     }
     
@@ -61,49 +55,31 @@ final class ServiceCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    //MARK: Public methods
-    
-    func setupService(model: ServiceModel) {
-        self.serviceImage.image = model.serviceImage
-        self.titleServiceLabel.text = model.serviceTitle
-        self.explanationLabel.text = model.serviceExplanation
-    }
-    
-    func setupUnderline() {
-        self.underLineView.isHidden = true
-    }
-    
     //MARK: Private methods
     
     private func setupUI() {
-        self.contentView.addSubview(self.serviceImage)
-        self.contentView.addSubview(self.titleServiceLabel)
-        self.contentView.addSubview(self.explanationLabel)
-        self.contentView.addSubview(self.arrowImage)
-        self.contentView.addSubview(self.underLineView)
+        self.addSubview(self.serviceImage)
+        self.addSubview(self.titleServiceLabel)
+        self.addSubview(self.explanationLabel)
+        self.addSubview(self.arrowImage)
         
         NSLayoutConstraint.activate([
-            self.contentView.heightAnchor.constraint(equalToConstant: 58),
-            
             self.serviceImage.heightAnchor.constraint(equalToConstant: 24),
             self.serviceImage.widthAnchor.constraint(equalToConstant: 24),
-            self.serviceImage.centerYAnchor.constraint(equalTo: self.contentView.centerYAnchor),
-            self.serviceImage.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: 15),
+            self.serviceImage.centerYAnchor.constraint(equalTo: self.centerYAnchor),
+            self.serviceImage.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 15),
             
-            self.titleServiceLabel.topAnchor.constraint(equalTo: self.contentView.topAnchor, constant: 10),
+            self.titleServiceLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 0),
             self.titleServiceLabel.leadingAnchor.constraint(equalTo: self.serviceImage.trailingAnchor, constant: 12),
             
             self.explanationLabel.topAnchor.constraint(equalTo: self.titleServiceLabel.bottomAnchor, constant: 2),
             self.explanationLabel.leadingAnchor.constraint(equalTo: self.serviceImage.trailingAnchor, constant: 12),
+            self.explanationLabel.bottomAnchor.constraint(equalTo: self.bottomAnchor),
             
             self.arrowImage.heightAnchor.constraint(equalToConstant: 14),
             self.arrowImage.widthAnchor.constraint(equalToConstant: 8),
-            self.arrowImage.centerYAnchor.constraint(equalTo: self.contentView.centerYAnchor),
-            self.arrowImage.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor, constant: -22),
-            
-            self.underLineView.leadingAnchor.constraint(equalTo: self.serviceImage.trailingAnchor, constant: -10),
-            self.underLineView.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor, constant: -15),
-            self.underLineView.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor),
+            self.arrowImage.centerYAnchor.constraint(equalTo: self.centerYAnchor),
+            self.arrowImage.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -22),
         ])
     }
 }

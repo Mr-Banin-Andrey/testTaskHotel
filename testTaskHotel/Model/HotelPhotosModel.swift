@@ -11,8 +11,8 @@ struct HotelPhotosModel {
     let photos: String
 }
 
-struct Photos {
-    let photos: [HotelPhotosModel] = [
+extension HotelPhotosModel {
+    static let photos: [HotelPhotosModel] = [
         HotelPhotosModel(photos: "1"),
         HotelPhotosModel(photos: "2"),
         HotelPhotosModel(photos: "3"),
