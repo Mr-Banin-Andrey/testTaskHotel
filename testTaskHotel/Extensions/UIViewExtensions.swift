@@ -11,7 +11,7 @@ extension UIView {
     
     var backgroundViewCell: UIView {
         self.translatesAutoresizingMaskIntoConstraints = false
-        self.backgroundColor = .mainBackgroundColor
+        self.backgroundColor = .backgroundViewOrCellColor
         self.layer.cornerRadius = 12
         return self
     }

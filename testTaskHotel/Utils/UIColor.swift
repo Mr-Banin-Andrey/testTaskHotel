@@ -9,25 +9,51 @@ import UIKit
 
 extension UIColor {
     
-    class var lineViewTabBarColor: UIColor {
-        UIColor(named: "lineViewTabBarColor") ?? lightGray
+    //MARK: AdvantaresView
+    
+    class var tileBackgroundColor: UIColor {
+        UIColor(named: "tileBackgroundColor") ?? white
+    }
+    
+    //MARK: DescriptionHotelCell ServiceStack
+    
+    class var serviceStackColor: UIColor {
+        UIColor(named: "serviceStackColor") ?? lightGray
     }
     
     class var lineServiceColor: UIColor {
         UIColor(named: "lineServiceColor") ?? lightGray
     }
-        
-    class var mainBackgroundColor: UIColor {
-        UIColor(named: "mainBackgroundColor") ?? white
+    
+    //MARK: Main
+    
+    class var mainTextColor: UIColor {
+        UIColor(named: "mainTextColor") ?? black
     }
     
-    class var mainButtonColor: UIColor {
-        UIColor(named: "mainButtonColor") ?? blue
+    class var mainSecondaryTextColor: UIColor {
+        UIColor(named: "mainSecondaryTextColor") ?? gray
     }
     
-    class var textTertiaryColorColor: UIColor {
-        UIColor(named: "tertiaryColor") ?? gray
+    class var backgroundViewOrCellColor: UIColor {
+        UIColor(named: "backgroundViewOrCellColor") ?? white
     }
+    
+    class var lineViewTabBarColor: UIColor {
+        UIColor(named: "lineViewTabBarColor") ?? lightGray
+    }
+    
+    //MARK: MainBlueButton
+    
+    class var buttonColor: UIColor {
+        UIColor(named: "buttonColor") ?? blue
+    }
+    
+    class var buttonTextColor: UIColor {
+        UIColor(named: "buttonTextColor") ?? white
+    }
+    
+    //MARK: NameHotelAndLocationView
     
     class var ratingBackgroungColor: UIColor {
         UIColor(named: "ratingBackgroungColor") ?? yellow
@@ -37,15 +63,23 @@ extension UIColor {
         UIColor(named: "ratingTextColor") ?? orange
     }
     
-    class var mainTextColor: UIColor {
-        UIColor(named: "mainTextColor") ?? black
+    class var locationTextColor: UIColor {
+        UIColor(named: "locationTextColor") ?? blue
     }
+    
+    //MARK: RoomCell
+    
+    class var detailAboutRoomTextColor: UIColor {
+        UIColor(named: "detailAboutRoomTextColor") ?? blue
+    }
+    
+    class var detailAboutRoomBackgroundColor: UIColor {
+        UIColor(named: "detailAboutRoomBackgroundColor") ?? cyan
+    }
+    
+    //MARK: TableView
     
     class var tableViewBackgroundColor: UIColor {
         UIColor(named: "tableViewBackgroundColor") ?? lightGray
-    }
-    
-    class var tileBackgroundColor: UIColor {
-        UIColor(named: "tileBackgroundColor") ?? white
     }
 }

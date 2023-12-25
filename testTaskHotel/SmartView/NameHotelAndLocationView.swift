@@ -59,7 +59,7 @@ final class NameHotelAndLocationView: UIView {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.text = "Madinat Makadi, Safaga Road, Makadi Bay, Египет"
         $0.font = .explanatoryTextFont
-        $0.textColor = .mainButtonColor
+        $0.textColor = .locationTextColor
         return $0
     }(UILabel())
     
@@ -70,7 +70,6 @@ final class NameHotelAndLocationView: UIView {
         
         self.heightAnchor.constraint(equalToConstant: 120).isActive = true
         self.translatesAutoresizingMaskIntoConstraints = false
-        self.backgroundColor = .mainBackgroundColor
         self.setupUI()
     }
     
@@ -80,13 +79,13 @@ final class NameHotelAndLocationView: UIView {
     
     //MARK: Public methods
     
-//    func setupData() {
-//        self.numberLabel.text
-//        self.descriptionLabel.text
+    func setupData() {
+//        self.numberLabel.text = "4"
+//        self.descriptionLabel.text = "cool"
 //        
-//        self.nameHotelLabel.text
-//        self.locationLabel.text
-//    }
+//        self.nameHotelLabel.text = "Punta cana"
+//        self.locationLabel.text = "msk"
+    }
     
     
     //MARK: Private methods

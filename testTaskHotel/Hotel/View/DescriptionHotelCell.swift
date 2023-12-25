@@ -26,14 +26,8 @@ final class DescriptionHotelCell: UITableViewCell {
         return $0
     }(UILabel())
     
-    private lazy var advantagesHotel: TTGTextTagCollectionView = {
-        $0.translatesAutoresizingMaskIntoConstraints = false
-        $0.alignment = .left
-        $0.showsVerticalScrollIndicator = false
-        $0.showsHorizontalScrollIndicator = false
-        return $0
-    }(TTGTextTagCollectionView(frame: .zero))
-    
+    private lazy var advantages = AdvantagesView()
+
     private lazy var descriptionLabel: UILabel = {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.textColor = .mainTextColor
@@ -47,7 +41,7 @@ final class DescriptionHotelCell: UITableViewCell {
         $0.axis = .vertical
         $0.spacing = 20
         $0.alignment = .fill
-        $0.backgroundColor = .tileBackgroundColor
+        $0.backgroundColor = .serviceStackColor
         $0.layoutMargins = UIEdgeInsets(top: 15, left: 0, bottom: 15, right: 0)
         $0.isLayoutMarginsRelativeArrangement = true
         $0.layer.cornerRadius = 15
@@ -88,7 +82,7 @@ final class DescriptionHotelCell: UITableViewCell {
     
     func setupCell(_ text: String, _ advantages: [String]) {
         self.descriptionLabel.text = text
-        self.setupAdvantagesHotel(advantages)
+        self.advantages.setupAdvantages(advantages)
     }
     
     //MARK: Private methods
@@ -96,7 +90,7 @@ final class DescriptionHotelCell: UITableViewCell {
     private func setupUI() {
         self.contentView.addSubview(self.backgroundCell)
         self.backgroundCell.addSubview(self.titleLabel)
-        self.backgroundCell.addSubview(self.advantagesHotel)
+        self.backgroundCell.addSubview(self.advantages)
         self.backgroundCell.addSubview(self.descriptionLabel)
         
         self.backgroundCell.addSubview(self.serviceStack)
@@ -115,12 +109,12 @@ final class DescriptionHotelCell: UITableViewCell {
             self.titleLabel.topAnchor.constraint(equalTo: self.backgroundCell.topAnchor, constant: 16),
             self.titleLabel.leadingAnchor.constraint(equalTo: self.backgroundCell.leadingAnchor, constant: 16),
             
-            self.advantagesHotel.topAnchor.constraint(equalTo: self.titleLabel.bottomAnchor, constant: 16),
-            self.advantagesHotel.leadingAnchor.constraint(equalTo: self.backgroundCell.leadingAnchor, constant: 16),
-            self.advantagesHotel.trailingAnchor.constraint(equalTo: self.backgroundCell.trailingAnchor, constant: -16),
-            self.advantagesHotel.heightAnchor.constraint(equalToConstant: 70),
+            self.advantages.topAnchor.constraint(equalTo: self.titleLabel.bottomAnchor, constant: 16),
+            self.advantages.leadingAnchor.constraint(equalTo: self.backgroundCell.leadingAnchor, constant: 16),
+            self.advantages.trailingAnchor.constraint(equalTo: self.backgroundCell.trailingAnchor, constant: -16),
+            self.advantages.heightAnchor.constraint(equalToConstant: 70),
             
-            self.descriptionLabel.topAnchor.constraint(equalTo: self.advantagesHotel.bottomAnchor, constant: 12),
+            self.descriptionLabel.topAnchor.constraint(equalTo: self.advantages.bottomAnchor, constant: 12),
             self.descriptionLabel.leadingAnchor.constraint(equalTo: self.backgroundCell.leadingAnchor, constant: 16),
             self.descriptionLabel.trailingAnchor.constraint(equalTo: self.backgroundCell.trailingAnchor, constant: -16),
             
@@ -137,24 +131,5 @@ final class DescriptionHotelCell: UITableViewCell {
             self.secondLine.leadingAnchor.constraint(equalTo: self.serviceStack.leadingAnchor, constant: 53),
             self.secondLine.trailingAnchor.constraint(equalTo: self.serviceStack.trailingAnchor, constant: -15),
         ])
-    }
-    
-    private func setupAdvantagesHotel(_ advantages: [String]) {
-        for advantage in advantages {
-            let textTagContent = TTGTextTagStringContent(text: advantage)
-            textTagContent.textFont = .nameTileFont
-            textTagContent.textColor = .textTertiaryColorColor
-
-            let style = TTGTextTagStyle()
-            style.shadowOpacity = 0
-            style.extraSpace = CGSize(width: 10, height: 5)
-            style.backgroundColor = .tileBackgroundColor
-            style.cornerRadius = 5
-            
-            let tag = TTGTextTag(content: textTagContent, style: style)
-            advantagesHotel.addTag(tag)
-        }
-        self.advantagesHotel.reload()
-        self.advantagesHotel.layoutIfNeeded()
     }
 }

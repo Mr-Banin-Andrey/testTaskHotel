@@ -35,4 +35,8 @@ final class HotelViewController: UIViewController {
 
 extension HotelViewController: HotelViewDelegate {
     
+    func showRoom() {
+        let roomVC = RoomViewController()
+        navigationController?.pushViewController(roomVC, animated: true)
+    }
 }

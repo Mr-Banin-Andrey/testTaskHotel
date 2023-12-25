@@ -25,6 +25,11 @@
 		9D7AA4652B3336D200EEAC9A /* DescriptionHotelCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7AA4642B3336D200EEAC9A /* DescriptionHotelCell.swift */; };
 		9D7AA4682B33548100EEAC9A /* UIViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7AA4672B33548100EEAC9A /* UIViewExtensions.swift */; };
 		9DB6D8982B3720B300FA3C41 /* ImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DB6D8972B3720B300FA3C41 /* ImageCell.swift */; };
+		9DB6D89E2B37615900FA3C41 /* RoomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DB6D89D2B37615900FA3C41 /* RoomViewController.swift */; };
+		9DB6D8A02B3761E500FA3C41 /* RoomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DB6D89F2B3761E500FA3C41 /* RoomView.swift */; };
+		9DB6D8A22B3765A900FA3C41 /* RoomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DB6D8A12B3765A900FA3C41 /* RoomCell.swift */; };
+		9DB6D8A42B38B9DB00FA3C41 /* PriceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DB6D8A32B38B9DB00FA3C41 /* PriceView.swift */; };
+		9DB6D8A62B38C3F300FA3C41 /* AdvantagesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DB6D8A52B38C3F300FA3C41 /* AdvantagesView.swift */; };
 		9DD9440F2B34B5960012D1D5 /* TTGTags in Frameworks */ = {isa = PBXBuildFile; productRef = 9DD9440E2B34B5960012D1D5 /* TTGTags */; };
 		9DD944152B34F60C0012D1D5 /* UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DD944142B34F60C0012D1D5 /* UIImage.swift */; };
 		9DD944172B34F6DF0012D1D5 /* ServiceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DD944162B34F6DF0012D1D5 /* ServiceCell.swift */; };
@@ -52,6 +57,11 @@
 		9D7AA4642B3336D200EEAC9A /* DescriptionHotelCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionHotelCell.swift; sourceTree = "<group>"; };
 		9D7AA4672B33548100EEAC9A /* UIViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtensions.swift; sourceTree = "<group>"; };
 		9DB6D8972B3720B300FA3C41 /* ImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCell.swift; sourceTree = "<group>"; };
+		9DB6D89D2B37615900FA3C41 /* RoomViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomViewController.swift; sourceTree = "<group>"; };
+		9DB6D89F2B3761E500FA3C41 /* RoomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomView.swift; sourceTree = "<group>"; };
+		9DB6D8A12B3765A900FA3C41 /* RoomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomCell.swift; sourceTree = "<group>"; };
+		9DB6D8A32B38B9DB00FA3C41 /* PriceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriceView.swift; sourceTree = "<group>"; };
+		9DB6D8A52B38C3F300FA3C41 /* AdvantagesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdvantagesView.swift; sourceTree = "<group>"; };
 		9DD944142B34F60C0012D1D5 /* UIImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImage.swift; sourceTree = "<group>"; };
 		9DD944162B34F6DF0012D1D5 /* ServiceCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceCell.swift; sourceTree = "<group>"; };
 		9DD944182B35091F0012D1D5 /* ServiceModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceModel.swift; sourceTree = "<group>"; };
@@ -152,6 +162,9 @@
 		9D7AA4482B318A7200EEAC9A /* Room */ = {
 			isa = PBXGroup;
 			children = (
+				9DB6D89A2B37611200FA3C41 /* Model */,
+				9DB6D89B2B37611900FA3C41 /* View */,
+				9DB6D89C2B37611E00FA3C41 /* ViewModel */,
 			);
 			path = Room;
 			sourceTree = "<group>";
@@ -166,9 +179,11 @@
 		9D7AA44A2B318AC900EEAC9A /* SmartView */ = {
 			isa = PBXGroup;
 			children = (
-				9DB6D8992B373EDE00FA3C41 /* GalleryPhotoView */,
+				9DB6D8A52B38C3F300FA3C41 /* AdvantagesView.swift */,
 				9D7AA44B2B318B6B00EEAC9A /* CustomBlueButton.swift */,
+				9DB6D8992B373EDE00FA3C41 /* GalleryPhotoView */,
 				9D7AA45A2B31D5C300EEAC9A /* NameHotelAndLocationView.swift */,
+				9DB6D8A32B38B9DB00FA3C41 /* PriceView.swift */,
 			);
 			path = SmartView;
 			sourceTree = "<group>";
@@ -208,6 +223,30 @@
 				9D7AA45E2B31F13900EEAC9A /* GalleryPhotoView.swift */,
 			);
 			path = GalleryPhotoView;
+			sourceTree = "<group>";
+		};
+		9DB6D89A2B37611200FA3C41 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		9DB6D89B2B37611900FA3C41 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				9DB6D8A12B3765A900FA3C41 /* RoomCell.swift */,
+				9DB6D89F2B3761E500FA3C41 /* RoomView.swift */,
+				9DB6D89D2B37615900FA3C41 /* RoomViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		9DB6D89C2B37611E00FA3C41 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		9DD944122B34EAE00012D1D5 /* Model */ = {
@@ -296,6 +335,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				9D7AA4682B33548100EEAC9A /* UIViewExtensions.swift in Sources */,
+				9DB6D89E2B37615900FA3C41 /* RoomViewController.swift in Sources */,
+				9DB6D8A62B38C3F300FA3C41 /* AdvantagesView.swift in Sources */,
 				9DD944192B35091F0012D1D5 /* ServiceModel.swift in Sources */,
 				9D7AA45F2B31F13900EEAC9A /* GalleryPhotoView.swift in Sources */,
 				9DD944172B34F6DF0012D1D5 /* ServiceCell.swift in Sources */,
@@ -304,13 +345,16 @@
 				9D7AA45B2B31D5C300EEAC9A /* NameHotelAndLocationView.swift in Sources */,
 				9DD944152B34F60C0012D1D5 /* UIImage.swift in Sources */,
 				9D7AA4322B3187F600EEAC9A /* SceneDelegate.swift in Sources */,
+				9DB6D8A22B3765A900FA3C41 /* RoomCell.swift in Sources */,
 				9DB6D8982B3720B300FA3C41 /* ImageCell.swift in Sources */,
 				9D7AA44C2B318B6B00EEAC9A /* CustomBlueButton.swift in Sources */,
 				9D7AA45D2B31E38300EEAC9A /* TitleHotelHeader.swift in Sources */,
+				9DB6D8A42B38B9DB00FA3C41 /* PriceView.swift in Sources */,
 				9D7AA44E2B318D1200EEAC9A /* UIColor.swift in Sources */,
 				9D7AA4632B331E5E00EEAC9A /* UIFont.swift in Sources */,
 				9D7AA4612B320F0100EEAC9A /* HotelPhotosModel.swift in Sources */,
 				9D7AA4542B318FCC00EEAC9A /* HotelView.swift in Sources */,
+				9DB6D8A02B3761E500FA3C41 /* RoomView.swift in Sources */,
 				9D7AA4592B318FF000EEAC9A /* HotelViewModel.swift in Sources */,
 				9D7AA4652B3336D200EEAC9A /* DescriptionHotelCell.swift in Sources */,
 			);

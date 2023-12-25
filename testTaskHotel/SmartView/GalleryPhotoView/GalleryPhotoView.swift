@@ -11,12 +11,11 @@ final class GalleryPhotoView: UIView {
     
     //MARK: Properties
     
-    private var imagesArray: [UIImage]
+    private var imagesArray: [UIImage] = []
     
     private lazy var pageControl: UIPageControl = {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.currentPage = 0
-        $0.numberOfPages = imagesArray.count
         $0.backgroundStyle = .minimal
         $0.isEnabled = false
         $0.size(forNumberOfPages: 1)
@@ -43,8 +42,7 @@ final class GalleryPhotoView: UIView {
     
     //MARK: Initial
     
-    init(images: [UIImage]) {
-        self.imagesArray = images
+    override init(frame: CGRect) {
         super.init(frame: .zero)
         
         self.heightAnchor.constraint(equalToConstant: 257).isActive = true
@@ -54,6 +52,14 @@ final class GalleryPhotoView: UIView {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    //MARK: Private methods
+    
+    func setup(_ images: [UIImage]) {
+        imagesArray = images
+        pageControl.numberOfPages = images.count
+        collectionView.reloadData()
     }
     
     //MARK: Private methods
