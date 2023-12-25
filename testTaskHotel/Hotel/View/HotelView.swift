@@ -10,7 +10,7 @@ import UIKit
 //MARK: - HotelViewDelegate
 
 protocol HotelViewDelegate: AnyObject {
-    
+    func showRoom()
 }
 
 //MARK: - HotelView
@@ -33,9 +33,9 @@ final class HotelView: UIView {
     }(UITableView(frame: .zero, style: .grouped))
     
     private lazy var selectHotelButton = CustomBlueButton(
-        title: "К выбору номера",
-        titleColor: .mainBackgroundColor,
-        backgroundColor: .mainButtonColor,
+        title: "Выбрать отель",
+        titleColor: .buttonTextColor,
+        backgroundColor: .buttonColor,
         action: actionButton
     )
     
@@ -43,6 +43,7 @@ final class HotelView: UIView {
     
     private var mockAdvantages = ["3-я линия", "Платный Wi-Fi в фойе", "30 км до аэропорта", "1 км до пляжа"]
     private var mockDescriptionHotel = "Отель VIP-класса с собственными гольф полями. Высокий уровнь сервиса. Рекомендуем для респектабельного отдыха. Отель принимает гостей от 18 лет!"
+    private var mockImages: [UIImage] = [._1, ._2, ._3, ._4, ._5,._1, ._2, ._3, ._4, ._5,._1, ._2, ._3, ._4, ._5,._1, ._2, ._3, ._4,]
     
     //MARK: Initial
     
@@ -50,7 +51,7 @@ final class HotelView: UIView {
         self.delegate = delegate
         super.init(frame: .zero)
         
-        self.backgroundColor = .mainBackgroundColor
+        self.backgroundColor = .backgroundViewOrCellColor
         self.setupUI()
     }
     
@@ -87,7 +88,7 @@ final class HotelView: UIView {
     //MARK: objc methods
     
     @objc private func actionButton() {
-        
+        delegate?.showRoom()
     }
 }
 
@@ -119,7 +120,7 @@ extension HotelView: UITableViewDelegate {
         guard
             let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: TitleHotelHeader.reuseID) as? TitleHotelHeader
         else { return nil }
-
+        header.setupHeader(mockImages)
         return header
     }
 }

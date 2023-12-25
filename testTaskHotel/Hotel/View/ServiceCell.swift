@@ -29,7 +29,7 @@ final class ServiceCell: UIView {
     private lazy var explanationLabel: UILabel = {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.font = .explanatoryTextFont
-        $0.textColor = .textTertiaryColorColor
+        $0.textColor = .mainSecondaryTextColor
         return $0
     }(UILabel())
     
