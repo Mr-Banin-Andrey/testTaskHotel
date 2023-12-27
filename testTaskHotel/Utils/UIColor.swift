@@ -67,6 +67,46 @@ extension UIColor {
         UIColor(named: "locationTextColor") ?? blue
     }
     
+    //MARK: OrderPaid
+    
+    class var backgroundImageViewColor: UIColor {
+        UIColor(named: "backgroundImageViewColor") ?? lightGray
+    }
+    
+    //MARK: ReservationView Arrow, TextField
+    
+    class var arrowBackColor: UIColor {
+        UIColor(named: "arrowBackColor") ?? white
+    }
+    
+    class var arrowTintColor: UIColor {
+        UIColor(named: "arrowTintColor") ?? white
+    }
+    
+    class var finalPriceLabelColor: UIColor {
+        UIColor(named: "finalPriceLabelColor") ?? blue
+    }
+    
+    class var textFieldBackgroundColor: UIColor {
+        UIColor(named: "textFieldBackgroundColor") ?? white
+    }
+    
+    class var textFieldColor: UIColor {
+        UIColor(named: "textFieldColor") ?? black
+    }
+    
+    class var textFieldTitleLabelColor: UIColor {
+        UIColor(named: "textFieldTitleLabelColor") ?? lightGray
+    }
+    
+    class var textFieldErrorColor: UIColor {
+        UIColor(named: "textFieldErrorColor") ?? systemPink
+    }
+    
+    class var textFieldErrorTextColor: UIColor {
+        UIColor(named: "textFieldErrorTextColor") ?? red
+    }
+    
     //MARK: RoomCell
     
     class var detailAboutRoomTextColor: UIColor {
@@ -82,4 +122,6 @@ extension UIColor {
     class var tableViewBackgroundColor: UIColor {
         UIColor(named: "tableViewBackgroundColor") ?? lightGray
     }
+        
+    
 }

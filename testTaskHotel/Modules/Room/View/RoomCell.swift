@@ -20,15 +20,11 @@ final class RoomCell: UITableViewCell {
     
     private lazy var galleryPhotoRoomView = GalleryPhotoView()
     
-    private lazy var titleRoomLabel: UILabel = {
-        $0.translatesAutoresizingMaskIntoConstraints = false
-        $0.textColor = .mainTextColor
-        $0.font = .titleFont
-        $0.text = "Стандартный с видом на бассейн или сад"
-        $0.numberOfLines = 2
+    private lazy var titleLabel: UILabel = {
+        $0.numberOfLines = 0
         $0.textAlignment = .left
         return $0
-    }(UILabel())
+    }(UILabel(state: .titleLabel))
     
     private lazy var advantagesRoomView = AdvantagesView()
     
@@ -70,6 +66,9 @@ final class RoomCell: UITableViewCell {
         action: actionButton
     )
     
+    private lazy var advantagesRoomViewHeight35 = self.advantagesRoomView.heightAnchor.constraint(equalToConstant: 35)
+    private lazy var advantagesRoomViewHeight70 = self.advantagesRoomView.heightAnchor.constraint(equalToConstant: 70)
+    
     //MARK: Initial
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -88,9 +87,15 @@ final class RoomCell: UITableViewCell {
     
     func setupCell(_ images: [UIImage], _ advantages: [String]) {
         self.galleryPhotoRoomView.setup(images)
-//        self.titleRoomLabel.text =
+        self.titleLabel.text = "Стандартный с видом на бассейн или сад"
         self.advantagesRoomView.setupAdvantages(advantages)
         self.priceView.setupView(.ruble)
+        
+        if advantages.count > 2 {
+            advantagesRoomViewHeight70.isActive = true
+        } else {
+            advantagesRoomViewHeight35.isActive = true
+        }
     }
     
     //MARK: Private methods
@@ -98,7 +103,7 @@ final class RoomCell: UITableViewCell {
     private func setupUI() {
         self.contentView.addSubview(self.backgroundCell)
         self.backgroundCell.addSubview(self.galleryPhotoRoomView)
-        self.backgroundCell.addSubview(self.titleRoomLabel)
+        self.backgroundCell.addSubview(self.titleLabel)
         self.backgroundCell.addSubview(self.advantagesRoomView)
         self.backgroundCell.addSubview(self.detailAboutRoomStackView)
         self.detailAboutRoomStackView.addArrangedSubview(descriptionLabel)
@@ -117,14 +122,14 @@ final class RoomCell: UITableViewCell {
             self.galleryPhotoRoomView.leadingAnchor.constraint(equalTo: self.backgroundCell.leadingAnchor, constant: 0),
             self.galleryPhotoRoomView.trailingAnchor.constraint(equalTo: self.backgroundCell.trailingAnchor, constant: 0),
             
-            self.titleRoomLabel.topAnchor.constraint(equalTo: self.galleryPhotoRoomView.bottomAnchor, constant: 8),
-            self.titleRoomLabel.leadingAnchor.constraint(equalTo: self.backgroundCell.leadingAnchor, constant: 16),
-            self.titleRoomLabel.trailingAnchor.constraint(equalTo: self.backgroundCell.trailingAnchor, constant: -16),
+            self.titleLabel.topAnchor.constraint(equalTo: self.galleryPhotoRoomView.bottomAnchor, constant: 8),
+            self.titleLabel.leadingAnchor.constraint(equalTo: self.backgroundCell.leadingAnchor, constant: 16),
+            self.titleLabel.trailingAnchor.constraint(equalTo: self.backgroundCell.trailingAnchor, constant: -16),
             
-            self.advantagesRoomView.topAnchor.constraint(equalTo: self.titleRoomLabel.bottomAnchor, constant: 8),
+            self.advantagesRoomView.topAnchor.constraint(equalTo: self.titleLabel.bottomAnchor, constant: 8),
             self.advantagesRoomView.leadingAnchor.constraint(equalTo: self.backgroundCell.leadingAnchor, constant: 16),
             self.advantagesRoomView.trailingAnchor.constraint(equalTo: self.backgroundCell.trailingAnchor, constant: -16),
-            self.advantagesRoomView.heightAnchor.constraint(equalToConstant: 35),
+//            self.advantagesRoomView.heightAnchor.constraint(equalToConstant: 35),
             
             self.arrowImage.heightAnchor.constraint(equalToConstant: 20),
             self.arrowImage.widthAnchor.constraint(equalToConstant: 20),

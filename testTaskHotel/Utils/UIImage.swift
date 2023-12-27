@@ -23,4 +23,9 @@ extension UIImage {
         UIImage(named: "tickSquareImage") ?? UIImage()
     }
 
+    //MARK: - Order Paid
+    
+    class var partyPopperImage: UIImage {
+        UIImage(named: "partyPopperImage") ?? UIImage()
+    }
 }

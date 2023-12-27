@@ -24,6 +24,18 @@
 		9D7AA4632B331E5E00EEAC9A /* UIFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7AA4622B331E5E00EEAC9A /* UIFont.swift */; };
 		9D7AA4652B3336D200EEAC9A /* DescriptionHotelCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7AA4642B3336D200EEAC9A /* DescriptionHotelCell.swift */; };
 		9D7AA4682B33548100EEAC9A /* UIViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7AA4672B33548100EEAC9A /* UIViewExtensions.swift */; };
+		9D8612202B3AC2300077D59C /* UILabelExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D86121F2B3AC2300077D59C /* UILabelExtensions.swift */; };
+		9D8612222B3ACAA10077D59C /* ReservationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D8612212B3ACAA10077D59C /* ReservationViewController.swift */; };
+		9D8612272B3ACDFE0077D59C /* ReservationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D8612262B3ACDFE0077D59C /* ReservationView.swift */; };
+		9D8612292B3AEDE60077D59C /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D8612282B3AEDE60077D59C /* CustomTextField.swift */; };
+		9D86122C2B3AEE3C0077D59C /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 9D86122B2B3AEE3C0077D59C /* IQKeyboardManagerSwift */; };
+		9D86122E2B3B084E0077D59C /* OrderParametersHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D86122D2B3B084E0077D59C /* OrderParametersHeader.swift */; };
+		9D8612322B3B0AEA0077D59C /* OrderStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D8612312B3B0AEA0077D59C /* OrderStackView.swift */; };
+		9D8612342B3B1A5E0077D59C /* UIStackViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D8612332B3B1A5E0077D59C /* UIStackViewExtensions.swift */; };
+		9D8612362B3B37E10077D59C /* TouristCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D8612352B3B37E10077D59C /* TouristCell.swift */; };
+		9D8612382B3B72A80077D59C /* FinalPriceAndAddTouristFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D8612372B3B72A80077D59C /* FinalPriceAndAddTouristFooter.swift */; };
+		9D8612452B3CC1F40077D59C /* OrderPaidViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D8612442B3CC1F40077D59C /* OrderPaidViewController.swift */; };
+		9D8612472B3CC2050077D59C /* OrderPaidView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D8612462B3CC2050077D59C /* OrderPaidView.swift */; };
 		9DB6D8982B3720B300FA3C41 /* ImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DB6D8972B3720B300FA3C41 /* ImageCell.swift */; };
 		9DB6D89E2B37615900FA3C41 /* RoomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DB6D89D2B37615900FA3C41 /* RoomViewController.swift */; };
 		9DB6D8A02B3761E500FA3C41 /* RoomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DB6D89F2B3761E500FA3C41 /* RoomView.swift */; };
@@ -32,7 +44,7 @@
 		9DB6D8A62B38C3F300FA3C41 /* AdvantagesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DB6D8A52B38C3F300FA3C41 /* AdvantagesView.swift */; };
 		9DD9440F2B34B5960012D1D5 /* TTGTags in Frameworks */ = {isa = PBXBuildFile; productRef = 9DD9440E2B34B5960012D1D5 /* TTGTags */; };
 		9DD944152B34F60C0012D1D5 /* UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DD944142B34F60C0012D1D5 /* UIImage.swift */; };
-		9DD944172B34F6DF0012D1D5 /* ServiceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DD944162B34F6DF0012D1D5 /* ServiceCell.swift */; };
+		9DD944172B34F6DF0012D1D5 /* ServiceCellForStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DD944162B34F6DF0012D1D5 /* ServiceCellForStack.swift */; };
 		9DD944192B35091F0012D1D5 /* ServiceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DD944182B35091F0012D1D5 /* ServiceModel.swift */; };
 /* End PBXBuildFile section */
 
@@ -56,6 +68,17 @@
 		9D7AA4622B331E5E00EEAC9A /* UIFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIFont.swift; sourceTree = "<group>"; };
 		9D7AA4642B3336D200EEAC9A /* DescriptionHotelCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionHotelCell.swift; sourceTree = "<group>"; };
 		9D7AA4672B33548100EEAC9A /* UIViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtensions.swift; sourceTree = "<group>"; };
+		9D86121F2B3AC2300077D59C /* UILabelExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILabelExtensions.swift; sourceTree = "<group>"; };
+		9D8612212B3ACAA10077D59C /* ReservationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReservationViewController.swift; sourceTree = "<group>"; };
+		9D8612262B3ACDFE0077D59C /* ReservationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReservationView.swift; sourceTree = "<group>"; };
+		9D8612282B3AEDE60077D59C /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
+		9D86122D2B3B084E0077D59C /* OrderParametersHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderParametersHeader.swift; sourceTree = "<group>"; };
+		9D8612312B3B0AEA0077D59C /* OrderStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderStackView.swift; sourceTree = "<group>"; };
+		9D8612332B3B1A5E0077D59C /* UIStackViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIStackViewExtensions.swift; sourceTree = "<group>"; };
+		9D8612352B3B37E10077D59C /* TouristCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TouristCell.swift; sourceTree = "<group>"; };
+		9D8612372B3B72A80077D59C /* FinalPriceAndAddTouristFooter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinalPriceAndAddTouristFooter.swift; sourceTree = "<group>"; };
+		9D8612442B3CC1F40077D59C /* OrderPaidViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderPaidViewController.swift; sourceTree = "<group>"; };
+		9D8612462B3CC2050077D59C /* OrderPaidView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderPaidView.swift; sourceTree = "<group>"; };
 		9DB6D8972B3720B300FA3C41 /* ImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCell.swift; sourceTree = "<group>"; };
 		9DB6D89D2B37615900FA3C41 /* RoomViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomViewController.swift; sourceTree = "<group>"; };
 		9DB6D89F2B3761E500FA3C41 /* RoomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomView.swift; sourceTree = "<group>"; };
@@ -63,7 +86,7 @@
 		9DB6D8A32B38B9DB00FA3C41 /* PriceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriceView.swift; sourceTree = "<group>"; };
 		9DB6D8A52B38C3F300FA3C41 /* AdvantagesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdvantagesView.swift; sourceTree = "<group>"; };
 		9DD944142B34F60C0012D1D5 /* UIImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImage.swift; sourceTree = "<group>"; };
-		9DD944162B34F6DF0012D1D5 /* ServiceCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceCell.swift; sourceTree = "<group>"; };
+		9DD944162B34F6DF0012D1D5 /* ServiceCellForStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceCellForStack.swift; sourceTree = "<group>"; };
 		9DD944182B35091F0012D1D5 /* ServiceModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -73,6 +96,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9DD9440F2B34B5960012D1D5 /* TTGTags in Frameworks */,
+				9D86122C2B3AEE3C0077D59C /* IQKeyboardManagerSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -100,12 +124,10 @@
 			children = (
 				9D7AA4432B31892000EEAC9A /* Application */,
 				9D7AA4662B33542300EEAC9A /* Extensions */,
-				9D7AA4472B318A6200EEAC9A /* Hotel */,
 				9D7AA43D2B3187F800EEAC9A /* Info.plist */,
 				9D7AA4452B31898800EEAC9A /* Model */,
-				9D7AA4492B318A7900EEAC9A /* Reservation */,
+				9D8612482B3CC7E10077D59C /* Modules */,
 				9D7AA4442B31896D00EEAC9A /* Resources */,
-				9D7AA4482B318A7200EEAC9A /* Room */,
 				9D7AA44A2B318AC900EEAC9A /* SmartView */,
 				9D7AA4462B3189B700EEAC9A /* Utils */,
 			);
@@ -172,6 +194,9 @@
 		9D7AA4492B318A7900EEAC9A /* Reservation */ = {
 			isa = PBXGroup;
 			children = (
+				9D8612252B3ACABA0077D59C /* Model */,
+				9D8612232B3ACAA60077D59C /* View */,
+				9D8612242B3ACAB20077D59C /* ViewModel */,
 			);
 			path = Reservation;
 			sourceTree = "<group>";
@@ -181,6 +206,7 @@
 			children = (
 				9DB6D8A52B38C3F300FA3C41 /* AdvantagesView.swift */,
 				9D7AA44B2B318B6B00EEAC9A /* CustomBlueButton.swift */,
+				9D8612282B3AEDE60077D59C /* CustomTextField.swift */,
 				9DB6D8992B373EDE00FA3C41 /* GalleryPhotoView */,
 				9D7AA45A2B31D5C300EEAC9A /* NameHotelAndLocationView.swift */,
 				9DB6D8A32B38B9DB00FA3C41 /* PriceView.swift */,
@@ -203,7 +229,7 @@
 				9D7AA4532B318FCC00EEAC9A /* HotelView.swift */,
 				9D7AA4562B318FDD00EEAC9A /* HotelViewController.swift */,
 				9D7AA45C2B31E38300EEAC9A /* TitleHotelHeader.swift */,
-				9DD944162B34F6DF0012D1D5 /* ServiceCell.swift */,
+				9DD944162B34F6DF0012D1D5 /* ServiceCellForStack.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -212,8 +238,81 @@
 			isa = PBXGroup;
 			children = (
 				9D7AA4672B33548100EEAC9A /* UIViewExtensions.swift */,
+				9D86121F2B3AC2300077D59C /* UILabelExtensions.swift */,
+				9D8612332B3B1A5E0077D59C /* UIStackViewExtensions.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		9D8612232B3ACAA60077D59C /* View */ = {
+			isa = PBXGroup;
+			children = (
+				9D8612212B3ACAA10077D59C /* ReservationViewController.swift */,
+				9D8612262B3ACDFE0077D59C /* ReservationView.swift */,
+				9D86122D2B3B084E0077D59C /* OrderParametersHeader.swift */,
+				9D8612312B3B0AEA0077D59C /* OrderStackView.swift */,
+				9D8612352B3B37E10077D59C /* TouristCell.swift */,
+				9D8612372B3B72A80077D59C /* FinalPriceAndAddTouristFooter.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		9D8612242B3ACAB20077D59C /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		9D8612252B3ACABA0077D59C /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		9D8612402B3CC19B0077D59C /* OrderPaid */ = {
+			isa = PBXGroup;
+			children = (
+				9D8612432B3CC1DA0077D59C /* Model */,
+				9D8612412B3CC1AA0077D59C /* View */,
+				9D8612422B3CC1B10077D59C /* ViewModel */,
+			);
+			path = OrderPaid;
+			sourceTree = "<group>";
+		};
+		9D8612412B3CC1AA0077D59C /* View */ = {
+			isa = PBXGroup;
+			children = (
+				9D8612442B3CC1F40077D59C /* OrderPaidViewController.swift */,
+				9D8612462B3CC2050077D59C /* OrderPaidView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		9D8612422B3CC1B10077D59C /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		9D8612432B3CC1DA0077D59C /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		9D8612482B3CC7E10077D59C /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				9D7AA4492B318A7900EEAC9A /* Reservation */,
+				9D7AA4482B318A7200EEAC9A /* Room */,
+				9D7AA4472B318A6200EEAC9A /* Hotel */,
+				9D8612402B3CC19B0077D59C /* OrderPaid */,
+			);
+			path = Modules;
 			sourceTree = "<group>";
 		};
 		9DB6D8992B373EDE00FA3C41 /* GalleryPhotoView */ = {
@@ -275,6 +374,7 @@
 			name = testTaskHotel;
 			packageProductDependencies = (
 				9DD9440E2B34B5960012D1D5 /* TTGTags */,
+				9D86122B2B3AEE3C0077D59C /* IQKeyboardManagerSwift */,
 			);
 			productName = testTaskHotel;
 			productReference = 9D7AA42C2B3187F600EEAC9A /* testTaskHotel.app */;
@@ -306,6 +406,7 @@
 			mainGroup = 9D7AA4232B3187F600EEAC9A;
 			packageReferences = (
 				9DD9440D2B34B5960012D1D5 /* XCRemoteSwiftPackageReference "TTGTagCollectionView" */,
+				9D86122A2B3AEE3C0077D59C /* XCRemoteSwiftPackageReference "IQKeyboardManager" */,
 			);
 			productRefGroup = 9D7AA42D2B3187F600EEAC9A /* Products */;
 			projectDirPath = "";
@@ -334,14 +435,24 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9D8612382B3B72A80077D59C /* FinalPriceAndAddTouristFooter.swift in Sources */,
+				9D8612322B3B0AEA0077D59C /* OrderStackView.swift in Sources */,
 				9D7AA4682B33548100EEAC9A /* UIViewExtensions.swift in Sources */,
 				9DB6D89E2B37615900FA3C41 /* RoomViewController.swift in Sources */,
+				9D8612452B3CC1F40077D59C /* OrderPaidViewController.swift in Sources */,
 				9DB6D8A62B38C3F300FA3C41 /* AdvantagesView.swift in Sources */,
 				9DD944192B35091F0012D1D5 /* ServiceModel.swift in Sources */,
+				9D8612342B3B1A5E0077D59C /* UIStackViewExtensions.swift in Sources */,
 				9D7AA45F2B31F13900EEAC9A /* GalleryPhotoView.swift in Sources */,
-				9DD944172B34F6DF0012D1D5 /* ServiceCell.swift in Sources */,
+				9D8612222B3ACAA10077D59C /* ReservationViewController.swift in Sources */,
+				9DD944172B34F6DF0012D1D5 /* ServiceCellForStack.swift in Sources */,
+				9D86122E2B3B084E0077D59C /* OrderParametersHeader.swift in Sources */,
 				9D7AA4302B3187F600EEAC9A /* AppDelegate.swift in Sources */,
+				9D8612292B3AEDE60077D59C /* CustomTextField.swift in Sources */,
 				9D7AA4572B318FDD00EEAC9A /* HotelViewController.swift in Sources */,
+				9D8612472B3CC2050077D59C /* OrderPaidView.swift in Sources */,
+				9D8612272B3ACDFE0077D59C /* ReservationView.swift in Sources */,
+				9D8612202B3AC2300077D59C /* UILabelExtensions.swift in Sources */,
 				9D7AA45B2B31D5C300EEAC9A /* NameHotelAndLocationView.swift in Sources */,
 				9DD944152B34F60C0012D1D5 /* UIImage.swift in Sources */,
 				9D7AA4322B3187F600EEAC9A /* SceneDelegate.swift in Sources */,
@@ -352,6 +463,7 @@
 				9DB6D8A42B38B9DB00FA3C41 /* PriceView.swift in Sources */,
 				9D7AA44E2B318D1200EEAC9A /* UIColor.swift in Sources */,
 				9D7AA4632B331E5E00EEAC9A /* UIFont.swift in Sources */,
+				9D8612362B3B37E10077D59C /* TouristCell.swift in Sources */,
 				9D7AA4612B320F0100EEAC9A /* HotelPhotosModel.swift in Sources */,
 				9D7AA4542B318FCC00EEAC9A /* HotelView.swift in Sources */,
 				9DB6D8A02B3761E500FA3C41 /* RoomView.swift in Sources */,
@@ -577,6 +689,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		9D86122A2B3AEE3C0077D59C /* XCRemoteSwiftPackageReference "IQKeyboardManager" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/hackiftekhar/IQKeyboardManager";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.5.16;
+			};
+		};
 		9DD9440D2B34B5960012D1D5 /* XCRemoteSwiftPackageReference "TTGTagCollectionView" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/zekunyan/TTGTagCollectionView";
@@ -588,6 +708,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		9D86122B2B3AEE3C0077D59C /* IQKeyboardManagerSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9D86122A2B3AEE3C0077D59C /* XCRemoteSwiftPackageReference "IQKeyboardManager" */;
+			productName = IQKeyboardManagerSwift;
+		};
 		9DD9440E2B34B5960012D1D5 /* TTGTags */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 9DD9440D2B34B5960012D1D5 /* XCRemoteSwiftPackageReference "TTGTagCollectionView" */;

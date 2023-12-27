@@ -8,7 +8,7 @@
 import UIKit
 
 protocol RoomViewDelegate: AnyObject {
-    
+    func showReservation()
 }
 
 //MARK: - RoomView
@@ -60,12 +60,6 @@ final class RoomView: UIView {
             self.tableView.bottomAnchor.constraint(equalTo: self.safeAreaLayoutGuide.bottomAnchor, constant: 0)
         ])
     }
-    
-    //MARK: objc methods
-    
-    @objc private func actionButton() {
-        
-    }
 }
 
 //MARK: - UITableViewDataSource
@@ -84,6 +78,7 @@ extension RoomView: UITableViewDataSource {
         
         cell.tapAction = { [unowned self] word in
             print("tapAction", word)
+            delegate?.showReservation()
         }
         
         cell.setupCell(mockImages, mockAdvantages)
