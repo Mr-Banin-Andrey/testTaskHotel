@@ -31,12 +31,7 @@ final class PriceView: UIView {
         return $0
     }(UILabel())
     
-    private lazy var priceDescriptionLabel: UILabel = {
-        $0.translatesAutoresizingMaskIntoConstraints = false
-        $0.font = .descriptionFont
-        $0.textColor = .mainSecondaryTextColor
-        return $0
-    }(UILabel())
+    private lazy var priceDescriptionLabel = UILabel(state: .forReservationLabel)
     
     //MARK: Initial
     

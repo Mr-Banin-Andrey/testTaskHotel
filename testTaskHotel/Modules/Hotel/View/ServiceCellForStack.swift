@@ -1,5 +1,5 @@
 //
-//  ServiceCell.swift
+//  ServiceCellForStack.swift
 //  testTaskHotel
 //
 //  Created by Андрей Банин on 22.12.23..
@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class ServiceCell: UIView {
+final class ServiceCellForStack: UIView {
     
     static let reuseID = "ServiceCellID"
     
@@ -47,7 +47,6 @@ final class ServiceCell: UIView {
         self.serviceImage.image = image
         self.titleServiceLabel.text = title
         self.explanationLabel.text = explanation
-        
         self.setupUI()
     }
     

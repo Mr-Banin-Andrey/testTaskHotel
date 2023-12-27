@@ -47,13 +47,7 @@ final class NameHotelAndLocationView: UIView {
         return $0
     }(UILabel())
     
-    private lazy var nameHotelLabel: UILabel = {
-        $0.translatesAutoresizingMaskIntoConstraints = false
-        $0.text = "Steigenberger Makadi"
-        $0.font = .titleFont
-        $0.textColor = .mainTextColor
-        return $0
-    }(UILabel())
+    private lazy var titleLabel = UILabel(state: .titleLabel)
     
     private lazy var locationLabel: UILabel = {
         $0.translatesAutoresizingMaskIntoConstraints = false
@@ -80,11 +74,10 @@ final class NameHotelAndLocationView: UIView {
     //MARK: Public methods
     
     func setupData() {
-//        self.numberLabel.text = "4"
-//        self.descriptionLabel.text = "cool"
-//        
-//        self.nameHotelLabel.text = "Punta cana"
-//        self.locationLabel.text = "msk"
+        self.numberLabel.text = "5"
+        self.descriptionLabel.text = "Превосходно"
+        self.titleLabel.text = "Steigenberger Makadi"
+        self.locationLabel.text = "Madinat Makadi, Safaga Road, Makadi Bay, Египет"
     }
     
     
@@ -95,7 +88,7 @@ final class NameHotelAndLocationView: UIView {
         self.ratingHotelStackView.addArrangedSubview(starImage)
         self.ratingHotelStackView.addArrangedSubview(numberLabel)
         self.ratingHotelStackView.addArrangedSubview(descriptionLabel)
-        self.addSubview(self.nameHotelLabel)
+        self.addSubview(self.titleLabel)
         self.addSubview(self.locationLabel)
         
         NSLayoutConstraint.activate([
@@ -105,10 +98,10 @@ final class NameHotelAndLocationView: UIView {
             self.ratingHotelStackView.topAnchor.constraint(equalTo: self.topAnchor, constant: 16),
             self.ratingHotelStackView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 16),
             
-            self.nameHotelLabel.topAnchor.constraint(equalTo: self.ratingHotelStackView.bottomAnchor, constant: 8),
-            self.nameHotelLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 16),
+            self.titleLabel.topAnchor.constraint(equalTo: self.ratingHotelStackView.bottomAnchor, constant: 8),
+            self.titleLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 16),
             
-            self.locationLabel.topAnchor.constraint(equalTo: self.nameHotelLabel.bottomAnchor, constant: 8),
+            self.locationLabel.topAnchor.constraint(equalTo: self.titleLabel.bottomAnchor, constant: 8),
             self.locationLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 16),
             self.locationLabel.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -16),
         ])

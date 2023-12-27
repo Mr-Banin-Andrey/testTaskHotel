@@ -1,25 +1,24 @@
 //
-//  RoomViewController.swift
+//  ReservationViewController.swift
 //  testTaskHotel
 //
-//  Created by Андрей Банин on 23.12.23..
+//  Created by Андрей Банин on 26.12.23..
 //
 
 import UIKit
 
-final class RoomViewController: UIViewController {
+//MARK: - ReservationViewController
+
+final class ReservationViewController: UIViewController {
     
-    private lazy var roomView = RoomView(delegate: self)
-    
-    //MARK: Initial
-    
+    private lazy var reservationView = ReservationView(delegate: self)
     
     //MARK: Life cycle
     
     override func loadView() {
         super.loadView()
         
-        view = roomView
+        view = reservationView
     }
     
     override func viewDidLoad() {
@@ -49,8 +48,8 @@ final class RoomViewController: UIViewController {
     }
 }
 
-//MARK: - RoomViewDelegate
+//MARK: - ReservationViewDelegate
 
-extension RoomViewController: RoomViewDelegate {
+extension ReservationViewController: ReservationViewDelegate {
     
 }

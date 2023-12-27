@@ -28,4 +28,12 @@ extension UIFont {
     class var explanatoryTextFont: UIFont {
         UIFont.systemFont(ofSize: 14, weight: .medium)
     }
+    
+    class var informationForBuyerFont: UIFont {
+        UIFont.systemFont(ofSize: 14, weight: .regular)
+    }
+    
+    class var finalPriceFont: UIFont {
+        UIFont.systemFont(ofSize: 16, weight: .semibold)
+    }
 }

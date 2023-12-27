@@ -18,23 +18,14 @@ final class DescriptionHotelCell: UITableViewCell {
     
     private lazy var advantagesArray: [String] = []
     
-    private lazy var titleLabel: UILabel = {
-        $0.translatesAutoresizingMaskIntoConstraints = false
-        $0.textColor = .mainTextColor
-        $0.font = .titleFont
-        $0.text = "Об отеле"
-        return $0
-    }(UILabel())
+    private lazy var titleLabel = UILabel(text: "Об отеле", state: .titleLabel)
     
     private lazy var advantages = AdvantagesView()
 
     private lazy var descriptionLabel: UILabel = {
-        $0.translatesAutoresizingMaskIntoConstraints = false
-        $0.textColor = .mainTextColor
-        $0.font = .descriptionFont
         $0.numberOfLines = 0
         return $0
-    }(UILabel())
+    }(UILabel(state: .descriptionLabel))
     
     private lazy var serviceStack: UIStackView = {
         $0.translatesAutoresizingMaskIntoConstraints = false
@@ -49,15 +40,15 @@ final class DescriptionHotelCell: UITableViewCell {
     }(UIStackView())
     
     
-    private lazy var сomfortCell = ServiceCell(image: ServiceModel.сomfort.image,
+    private lazy var сomfortCell = ServiceCellForStack(image: ServiceModel.сomfort.image,
                                                title: ServiceModel.сomfort.title,
                                                explanation: ServiceModel.сomfort.explanation)
     
-    private lazy var whatIsIncludedCell = ServiceCell(image: ServiceModel.whatIsIncluded.image,
+    private lazy var whatIsIncludedCell = ServiceCellForStack(image: ServiceModel.whatIsIncluded.image,
                                                       title: ServiceModel.whatIsIncluded.title,
                                                       explanation: ServiceModel.whatIsIncluded.explanation)
     
-    private lazy var whatIsNotIncludedCell = ServiceCell(image: ServiceModel.whatIsNotIncluded.image,
+    private lazy var whatIsNotIncludedCell = ServiceCellForStack(image: ServiceModel.whatIsNotIncluded.image,
                                                          title: ServiceModel.whatIsNotIncluded.title,
                                                          explanation: ServiceModel.whatIsNotIncluded.explanation)
     
