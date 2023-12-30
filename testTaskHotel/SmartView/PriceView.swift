@@ -48,10 +48,10 @@ final class PriceView: UIView {
     
     //MARK: Public methods
     
-    func setupView(_ currency: Сurrency) {
-        self.priceLabel.text = "от 134 500"
+    func setupView(_ price: String, _ description: String, _ currency: Сurrency) {
+        self.priceLabel.text = price
         self.currencyLabel.text = currency.rawValue
-        self.priceDescriptionLabel.text = "за тур с перелётом"
+        self.priceDescriptionLabel.text = description
     }
     
     //MARK: Private methods

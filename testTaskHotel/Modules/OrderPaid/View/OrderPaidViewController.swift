@@ -10,6 +10,18 @@ import UIKit
 final class OrderPaidViewController: UIViewController {
     
     private lazy var orderPaidView = OrderPaidView(delegate: self)
+    private let viewModel: OrderPaidViewModelProtocol
+    
+    //MARK: Initial
+    
+    init(viewModel: OrderPaidViewModelProtocol) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     //MARK: Life cycle
     
@@ -23,19 +35,30 @@ final class OrderPaidViewController: UIViewController {
         super.viewDidLoad()
         
         self.setupNavigationBar()
+        bindViewModel()
+    }
+    
+    //MARK: Update State
+    
+    func bindViewModel() {
+        viewModel.onStateDidChange = { [weak self] state in
+            guard let self = self else { return }
+            switch state {
+            case .initial:
+                print("initial")
+            }
+        }
     }
     
     //MARK: Private methods
     
     private func setupNavigationBar() {
-        
         let navBarAppearance = UINavigationBarAppearance()
         navBarAppearance.backgroundColor = .backgroundViewOrCellColor
         navBarAppearance.titleTextAttributes = [.foregroundColor: UIColor.mainTextColor]
         self.navigationController?.navigationBar.standardAppearance = navBarAppearance
         self.navigationController?.navigationBar.scrollEdgeAppearance = navBarAppearance
-
-        self.navigationItem.title = "Какой-то отель"
+        self.navigationItem.title = "Заказ оплачен"
         let backBarButton = UIBarButtonItem()
         backBarButton.title = nil
         backBarButton.tintColor = .mainTextColor
@@ -47,6 +70,6 @@ final class OrderPaidViewController: UIViewController {
 
 extension OrderPaidViewController: OrderPaidViewDelegate {
     func closeDeal() {
-        print("final")
+        viewModel.updateState(viewInput: .backToTourSelection)
     }
 }

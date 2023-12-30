@@ -36,7 +36,8 @@ final class AdvantagesView: UIView {
     //MARK: Public methods
     
     func setupAdvantages(_ advantages: [String]) {
-        for advantage in advantages {
+        print("count", advantages.count)
+        advantages.forEach { advantage in
             let textTagContent = TTGTextTagStringContent(text: advantage)
             textTagContent.textFont = .nameTileFont
             textTagContent.textColor = .mainSecondaryTextColor
@@ -63,7 +64,7 @@ final class AdvantagesView: UIView {
             self.advantagesCollectionView.topAnchor.constraint(equalTo: self.topAnchor),
             self.advantagesCollectionView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
             self.advantagesCollectionView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
-            self.advantagesCollectionView.bottomAnchor.constraint(equalTo: self.bottomAnchor),
+            self.bottomAnchor.constraint(greaterThanOrEqualTo: advantagesCollectionView.bottomAnchor, constant: 4),
         ])
     }
 }

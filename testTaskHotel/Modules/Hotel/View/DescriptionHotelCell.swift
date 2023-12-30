@@ -15,11 +15,8 @@ final class DescriptionHotelCell: UITableViewCell {
     //MARK: Properties
     
     private lazy var backgroundCell = UIView().backgroundViewCell
-    
     private lazy var advantagesArray: [String] = []
-    
     private lazy var titleLabel = UILabel(text: "Об отеле", state: .titleLabel)
-    
     private lazy var advantages = AdvantagesView()
 
     private lazy var descriptionLabel: UILabel = {
@@ -71,9 +68,9 @@ final class DescriptionHotelCell: UITableViewCell {
     
     //MARK: Public methods
     
-    func setupCell(_ text: String, _ advantages: [String]) {
-        self.descriptionLabel.text = text
-        self.advantages.setupAdvantages(advantages)
+    func setupCell(model: HotelModel) {
+        self.descriptionLabel.text = model.aboutTheHotel.description
+        self.advantages.setupAdvantages(model.aboutTheHotel.peculiarities)
     }
     
     //MARK: Private methods
@@ -103,13 +100,12 @@ final class DescriptionHotelCell: UITableViewCell {
             self.advantages.topAnchor.constraint(equalTo: self.titleLabel.bottomAnchor, constant: 16),
             self.advantages.leadingAnchor.constraint(equalTo: self.backgroundCell.leadingAnchor, constant: 16),
             self.advantages.trailingAnchor.constraint(equalTo: self.backgroundCell.trailingAnchor, constant: -16),
-            self.advantages.heightAnchor.constraint(equalToConstant: 70),
             
-            self.descriptionLabel.topAnchor.constraint(equalTo: self.advantages.bottomAnchor, constant: 12),
+            self.descriptionLabel.topAnchor.constraint(equalTo: self.advantages.bottomAnchor, constant: 8),
             self.descriptionLabel.leadingAnchor.constraint(equalTo: self.backgroundCell.leadingAnchor, constant: 16),
             self.descriptionLabel.trailingAnchor.constraint(equalTo: self.backgroundCell.trailingAnchor, constant: -16),
             
-            self.serviceStack.topAnchor.constraint(equalTo: self.descriptionLabel.bottomAnchor, constant: 16),
+            self.serviceStack.topAnchor.constraint(equalTo: self.descriptionLabel.bottomAnchor, constant: 8),
             self.serviceStack.leadingAnchor.constraint(equalTo: self.backgroundCell.leadingAnchor, constant: 16),
             self.serviceStack.trailingAnchor.constraint(equalTo: self.backgroundCell.trailingAnchor, constant: -16),
             self.serviceStack.bottomAnchor.constraint(equalTo: self.backgroundCell.bottomAnchor, constant: -16),

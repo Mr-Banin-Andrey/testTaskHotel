@@ -8,16 +8,23 @@
 import UIKit
 import TTGTags
 
+//MARK: - RoomCellDelegate
+
+protocol RoomCellDelegate: AnyObject {
+    func bookRoom()
+}
+
+//MARK: - RoomCell
+
 final class RoomCell: UITableViewCell {
     
     static let reuseID = "RoomCellID"
     
-    var tapAction: ((String) -> Void)?
-    
+    weak var delegate: RoomCellDelegate?
+        
     //MARK: Properties
     
     private lazy var backgroundCell = UIView().backgroundViewCell
-    
     private lazy var galleryPhotoRoomView = GalleryPhotoView()
     
     private lazy var titleLabel: UILabel = {
@@ -66,8 +73,8 @@ final class RoomCell: UITableViewCell {
         action: actionButton
     )
     
-    private lazy var advantagesRoomViewHeight35 = self.advantagesRoomView.heightAnchor.constraint(equalToConstant: 35)
-    private lazy var advantagesRoomViewHeight70 = self.advantagesRoomView.heightAnchor.constraint(equalToConstant: 70)
+    private lazy var advantagesRoomViewheightAnchor35 = self.advantagesRoomView.heightAnchor.constraint(equalToConstant: 35)
+    private lazy var advantagesRoomViewheightAnchor70 = self.advantagesRoomView.heightAnchor.constraint(equalToConstant: 70)
     
     //MARK: Initial
     
@@ -85,18 +92,20 @@ final class RoomCell: UITableViewCell {
     
     //MARK: Public methods
     
-    func setupCell(_ images: [UIImage], _ advantages: [String]) {
-        self.galleryPhotoRoomView.setup(images)
-        self.titleLabel.text = "Стандартный с видом на бассейн или сад"
-        self.advantagesRoomView.setupAdvantages(advantages)
-        self.priceView.setupView(.ruble)
+    func setupCell(model: RoomModel) {
+        self.galleryPhotoRoomView.setup(model.images.compactMap({ UIImage(data: $0) }))
+        self.titleLabel.text = model.name
+        self.advantagesRoomView.setupAdvantages(model.peculiarities)
+        self.priceView.setupView(UsefulMethods().formatNumber(model.price), model.pricePer, .ruble)
         
-        if advantages.count > 2 {
-            advantagesRoomViewHeight70.isActive = true
+        if model.peculiarities.count > 2 {
+            advantagesRoomViewheightAnchor70.isActive = true
         } else {
-            advantagesRoomViewHeight35.isActive = true
+            advantagesRoomViewheightAnchor35.isActive = true
         }
+        
     }
+    
     
     //MARK: Private methods
     
@@ -129,12 +138,11 @@ final class RoomCell: UITableViewCell {
             self.advantagesRoomView.topAnchor.constraint(equalTo: self.titleLabel.bottomAnchor, constant: 8),
             self.advantagesRoomView.leadingAnchor.constraint(equalTo: self.backgroundCell.leadingAnchor, constant: 16),
             self.advantagesRoomView.trailingAnchor.constraint(equalTo: self.backgroundCell.trailingAnchor, constant: -16),
-//            self.advantagesRoomView.heightAnchor.constraint(equalToConstant: 35),
             
             self.arrowImage.heightAnchor.constraint(equalToConstant: 20),
             self.arrowImage.widthAnchor.constraint(equalToConstant: 20),
             
-            self.detailAboutRoomStackView.topAnchor.constraint(equalTo: self.advantagesRoomView.bottomAnchor, constant: 8),
+            self.detailAboutRoomStackView.topAnchor.constraint(equalTo: self.advantagesRoomView.bottomAnchor, constant: 0),
             self.detailAboutRoomStackView.leadingAnchor.constraint(equalTo: self.backgroundCell.leadingAnchor, constant: 16),
             
             self.priceView.topAnchor.constraint(equalTo: self.detailAboutRoomStackView.bottomAnchor, constant: 16),
@@ -151,6 +159,6 @@ final class RoomCell: UITableViewCell {
     //MARK: objc methods
     
     @objc private func actionButton() {
-        tapAction?("word")
+        delegate?.bookRoom()
     }
 }

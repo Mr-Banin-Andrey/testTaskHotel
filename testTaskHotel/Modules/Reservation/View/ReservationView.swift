@@ -8,14 +8,16 @@
 import UIKit
 
 protocol ReservationViewDelegate: AnyObject {
-    
+    func goToPay()
 }
 
 final class ReservationView: UIView {
     
-    private weak var delegate: ReservationViewDelegate?
-    
     //MARK: Properties
+    
+    
+    
+    private weak var delegate: ReservationViewDelegate?
     
     private lazy var tableView: UITableView = {
         $0.translatesAutoresizingMaskIntoConstraints = false
@@ -30,7 +32,7 @@ final class ReservationView: UIView {
     }(UITableView(frame: .zero, style: .grouped))
     
     private lazy var selectHotelButton = CustomBlueButton(
-        title: "Выбрать отель",
+        title: "Оплатить",
         titleColor: .buttonTextColor,
         backgroundColor: .buttonColor,
         action: actionButton
@@ -38,8 +40,12 @@ final class ReservationView: UIView {
     
     private lazy var lineView = UIView().lineViewTabBar
     
+    private lazy var activityIndicator = UIActivityIndicatorView().activityIndicatorView
+    
     private var namesOfTourists = ["Первый турист", "Второй турист"]
     private var arrayName = ["Третий турист", "Четвертый турист", "Пятый турист", "Шестой турист", "Седьмой турист", "Восьмой турист", "Девятый турист", "Десятый турист"]
+    
+    private var reservationModel = ReservationModelDecodable(id: 0, hotelName: "", hotelAddress: "", horating: 0, ratingName: "", departure: "", arrivalCountry: "", tourDateStart: "", tourDateStop: "", numberOfNights: 0, room: "", nutrition: "", tourPrice: 0, fuelCharge: 0, serviceCharge: 0)
     
     //MARK: Initial
     
@@ -58,16 +64,38 @@ final class ReservationView: UIView {
     
     //MARK: Public methods
     
+    func setupView(model: ReservationModelDecodable) {
+        let finalPrice = model.tourPrice + model.fuelCharge + model.serviceCharge
+        
+        self.reservationModel = model
+        self.selectHotelButton.setTitle("Оплатить \(UsefulMethods().formatNumber(finalPrice)) ₽", for: .normal)
+    }
     
+    func reload() {
+        tableView.reloadData()
+    }
+    
+    func updateViewVisibility(isHidden: Bool) {
+        tableView.isHidden = isHidden
+        activityIndicator.isHidden = !isHidden
+    }
+
+    func updateLoadingAnimation(isLoading: Bool) {
+        isLoading ? activityIndicator.startAnimating() : activityIndicator.stopAnimating()
+    }
     
     //MARK: Private methods
     
     private func setupUI() {
+        self.addSubview(self.activityIndicator)
         self.addSubview(self.tableView)
         self.addSubview(self.selectHotelButton)
         self.addSubview(self.lineView)
         
         NSLayoutConstraint.activate([
+            self.activityIndicator.centerXAnchor.constraint(equalTo: centerXAnchor),
+            self.activityIndicator.centerYAnchor.constraint(equalTo: centerYAnchor),
+            
             self.tableView.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 0),
             self.tableView.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor, constant: 0),
             self.tableView.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor, constant: 0),
@@ -86,7 +114,7 @@ final class ReservationView: UIView {
     //MARK: objc methods
     
     @objc private func actionButton() {
-//        delegate?.showRoom()
+        delegate?.goToPay()
     }
 }
 
@@ -125,7 +153,7 @@ extension ReservationView: UITableViewDelegate {
         guard
             let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: OrderParametersHeader.reuseID) as? OrderParametersHeader
         else { return nil }
-        header.setupHeader()
+        header.setupHeader(model: reservationModel)
         return header
     }
     
@@ -134,13 +162,14 @@ extension ReservationView: UITableViewDelegate {
             let footer = tableView.dequeueReusableHeaderFooterView(withIdentifier: FinalPriceAndAddTouristFooter.reuseID) as? FinalPriceAndAddTouristFooter
         else { return nil }
         footer.delegate = self
-        footer.setupFooter()
+        footer.setupFooter(model: reservationModel)
         return footer
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let cell = tableView.cellForRow(at: indexPath) as? TouristCell else { return }
-  
+        
+            
         if cell.state == .close {
             cell.state(state: .open)
         } else {
