@@ -56,14 +56,15 @@ final class OrderStackView: UIView {
     
     //MARK: Public methods
     
-    func setupStack() {
-        self.departureValueLabel.text = "Санкт-Петербург"
-        self.countryValueLabel.text = "Египет, Хургада"
-        self.dateValueLabel.text = "19.09.2023 – 27.09.2023"
-        self.countNightValueLabel.text = "7 ночей"
-        self.hotelValueLabel.text = "Steigenberger Makadi"
-        self.roomValueLabel.text = "Стандартный с видом на бассейн или сад"
-        self.nutritionValueLabel.text = "Все включено"
+    func setupStack(model: ReservationModelDecodable) {
+        
+        self.departureValueLabel.text = model.departure
+        self.countryValueLabel.text = model.arrivalCountry
+        self.dateValueLabel.text = "\(model.tourDateStart) – \(model.tourDateStop)"
+        self.countNightValueLabel.text = "\(model.numberOfNights) ночей"
+        self.hotelValueLabel.text = model.hotelName
+        self.roomValueLabel.text = model.room
+        self.nutritionValueLabel.text = model.nutrition
     }
     
     //MARK: Private methods

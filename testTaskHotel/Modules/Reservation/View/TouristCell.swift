@@ -50,7 +50,6 @@ final class TouristCell: UITableViewCell {
     private lazy var dataStackViewBottomConstraint = self.dataStackView.bottomAnchor.constraint(equalTo: self.backgroundCell.bottomAnchor, constant: -16)
     private lazy var titleLabelBottomConstraint = self.titleLabel.bottomAnchor.constraint(equalTo: self.backgroundCell.bottomAnchor, constant: -16)
     
-    
     var state: State = .close {
         didSet{
             delegate?.beginUpdateView()

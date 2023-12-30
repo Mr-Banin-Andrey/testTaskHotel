@@ -7,9 +7,13 @@
 
 import UIKit
 
+//MARK: - FinalPriceAndAddTouristFooterDelegate
+
 protocol FinalPriceAndAddTouristFooterDelegate: AnyObject {
     func addTourist()
 }
+
+//MARK: - FinalPriceAndAddTouristFooter
 
 final class FinalPriceAndAddTouristFooter: UITableViewHeaderFooterView {
     
@@ -78,11 +82,14 @@ final class FinalPriceAndAddTouristFooter: UITableViewHeaderFooterView {
     
     //MARK: Public methods
     
-    func setupFooter() {
-        self.tourValueLabel.text = "186 600 ₽"
-        self.fuelSurchargeValueLabel.text = "9 300 ₽"
-        self.serviceFeeValueLabel.text = "2 136 ₽"
-        self.toPayValueLabel.text = "198 036 ₽"
+    func setupFooter(model: ReservationModelDecodable) {
+        let usefull = UsefulMethods()
+        let finalPrice = model.tourPrice + model.fuelCharge + model.serviceCharge
+        
+        self.tourValueLabel.text = "\(usefull.formatNumber(model.tourPrice)) ₽"
+        self.fuelSurchargeValueLabel.text = "\(usefull.formatNumber(model.fuelCharge)) ₽"
+        self.serviceFeeValueLabel.text = "\(usefull.formatNumber(model.serviceCharge)) ₽"
+        self.toPayValueLabel.text = "\(usefull.formatNumber(finalPrice)) ₽"
     }
     
     //MARK: Private methods

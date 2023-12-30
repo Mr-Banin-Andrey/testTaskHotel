@@ -60,9 +60,8 @@ final class CustomTextField: UITextField {
         self.keyboardType = keyboardType
         self.setupMode(self.mode)
         self.setup()
-        self.delegate = self
-        IQKeyboardManager.shared.toolbarTintColor = .black
-        IQKeyboardManager.shared.toolbarBarTintColor = .white
+        IQKeyboardManager.shared.toolbarTintColor = .mainTextColor
+        IQKeyboardManager.shared.toolbarBarTintColor = .backgroundViewOrCellColor
     }
     
     required init?(coder: NSCoder) {
@@ -89,10 +88,10 @@ final class CustomTextField: UITextField {
         self.errorTitle.text = text
     }
     
-    func cancelError() {
+    func cancelError(text: String? = nil) {
         self.backgroundColor = .textFieldBackgroundColor
         self.errorTitle.isHidden = true
-        self.errorTitle.text = nil
+        self.errorTitle.text = text
     }
     
     // MARK: Private methods
@@ -141,8 +140,8 @@ final class CustomTextField: UITextField {
     
     @objc private func addFloatingLabel() {
         self.labelTitle.text = self.title
+        self.cancelError()
         if self.text == "" {
-            self.cancelError()
             self.labelTitle.isHidden = false
             self.edgeInsets = self.withTitle
 
@@ -162,36 +161,14 @@ final class CustomTextField: UITextField {
             self.layoutIfNeeded()
             
             self.showError(text: "Поле должно быть заполнено")
+        } else {
+            if self.keyboardType == .emailAddress {
+                guard let text = self.text else { return }
+                if UsefulMethods().isValidEmail(text) != true {
+                    showError(text: "Неккоректная почта")
+                }
+            }
         }
     }
     
-}
-
-extension CustomTextField: UITextFieldDelegate {
-//    func formattedNumber(number: String) -> String {
-//        let cleanPhoneNumber = number.components(separatedBy: CharacterSet.decimalDigits.inverted).joined()
-//        let mask = "+7 (***) ***-**-**"
-//        var result = ""
-//        var index = cleanPhoneNumber.startIndex
-//        for ch in mask where index < cleanPhoneNumber.endIndex {
-//            if ch == "#" {
-//                result.append(cleanPhoneNumber[index])
-//                index = cleanPhoneNumber.index(after: index)
-//            } else {
-//                result.append(ch)
-//            }
-//        }
-//        return result
-//    }
-//    
-//    func textField(
-//        _ textField: UITextField,
-//        shouldChangeCharactersIn range: NSRange,
-//        replacementString string:  String
-//    ) -> Bool {
-//        guard let text = textField.text else { return false }
-//        let newString = (text as NSString).replacingCharacters(in: range, with: string)
-//        textField.text = "+7 \(formattedNumber(number: newString))"
-//        return false
-//    }
 }

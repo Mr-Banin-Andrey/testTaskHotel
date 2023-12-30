@@ -27,7 +27,7 @@ final class CustomBlueButton: UIButton {
         self.setTitle(title, for: .normal)
         self.setTitleColor(titleColor, for: .normal)
         self.backgroundColor = backgroundColor
-        self.layer.cornerRadius = 10
+        self.layer.cornerRadius = 15
         self.titleLabel?.font = .nameTileFont
         
         addTarget(self, action: #selector(actionButton), for: .touchUpInside)

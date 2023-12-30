@@ -18,7 +18,7 @@ protocol HotelViewDelegate: AnyObject {
 final class HotelView: UIView {
     
     private weak var delegate: HotelViewDelegate?
-    
+
     //MARK: Properties
     
     private lazy var tableView: UITableView = {
@@ -33,21 +33,23 @@ final class HotelView: UIView {
     }(UITableView(frame: .zero, style: .grouped))
     
     private lazy var selectHotelButton = CustomBlueButton(
-        title: "Выбрать отель",
+        title: "К выбору номера",
         titleColor: .buttonTextColor,
         backgroundColor: .buttonColor,
         action: actionButton
     )
     
     private lazy var lineView = UIView().lineViewTabBar
+    private lazy var activityIndicator = UIActivityIndicatorView().activityIndicatorView
     
-    private var mockAdvantages = ["3-я линия", "Платный Wi-Fi в фойе", "30 км до аэропорта", "1 км до пляжа"]
-    private var mockDescriptionHotel = "Отель VIP-класса с собственными гольф полями. Высокий уровнь сервиса. Рекомендуем для респектабельного отдыха. Отель принимает гостей от 18 лет!"
-    private var mockImages: [UIImage] = [._1, ._2, ._3, ._4, ._5,._1, ._2, ._3, ._4, ._5,._1, ._2, ._3, ._4, ._5,._1, ._2, ._3, ._4,]
+    private var hotel = HotelModel(id: 0,name: "",address: "", minimalPrice: 0,priceForIt: "",rating: 0,ratingName: "",images: [],aboutTheHotel: AboutTheHotel(description: "", peculiarities: []))
+    
     
     //MARK: Initial
     
-    init(delegate: HotelViewDelegate) {
+    init(
+        delegate: HotelViewDelegate
+    ) {
         self.delegate = delegate
         super.init(frame: .zero)
         
@@ -61,15 +63,46 @@ final class HotelView: UIView {
     
     //MARK: Public methods
     
+    func setupView(model: HotelModel) {
+        self.hotel = model
+    }
+    
+    func reload() {
+        tableView.reloadData()
+    }
+    
+    func updateViewVisibility(isHidden: Bool) {
+        if isHidden {
+            lineView.alpha = 0
+            selectHotelButton.alpha = 0
+        } else {
+            lineView.alpha = 1
+            selectHotelButton.alpha = 1
+        }
+        tableView.isHidden = isHidden
+        activityIndicator.isHidden = !isHidden
+    }
+
+    func updateLoadingAnimation(isLoading: Bool) {
+        isLoading ? activityIndicator.startAnimating() : activityIndicator.stopAnimating()
+    }
+    
+    func getNameHotel() -> String {
+        self.hotel.name
+    }
     
     //MARK: Private methods
     
     private func setupUI() {
+        self.addSubview(self.activityIndicator)
         self.addSubview(self.tableView)
         self.addSubview(self.selectHotelButton)
         self.addSubview(self.lineView)
         
         NSLayoutConstraint.activate([
+            self.activityIndicator.centerXAnchor.constraint(equalTo: centerXAnchor),
+            self.activityIndicator.centerYAnchor.constraint(equalTo: centerYAnchor),
+            
             self.tableView.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 0),
             self.tableView.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor, constant: 0),
             self.tableView.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor, constant: 0),
@@ -106,7 +139,7 @@ extension HotelView: UITableViewDataSource {
             let cell = tableView.dequeueReusableCell(withIdentifier: DescriptionHotelCell.reuseID, for: indexPath) as? DescriptionHotelCell
         else { return UITableViewCell() }
         
-        cell.setupCell(mockDescriptionHotel, mockAdvantages)
+        cell.setupCell(model: hotel)
         return cell
     }
 }
@@ -120,7 +153,8 @@ extension HotelView: UITableViewDelegate {
         guard
             let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: TitleHotelHeader.reuseID) as? TitleHotelHeader
         else { return nil }
-        header.setupHeader(mockImages)
+        
+        header.setupHeader(model: hotel)
         return header
     }
 }

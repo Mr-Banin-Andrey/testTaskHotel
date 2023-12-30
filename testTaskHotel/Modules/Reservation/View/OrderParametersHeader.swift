@@ -11,6 +11,8 @@ final class OrderParametersHeader: UITableViewHeaderFooterView {
     
     static let reuseID = "OrderParametersHeaderID"
     
+    var tapAction: ((Bool) -> Void)?
+    
     //MARK: Properties
     
     private lazy var backgroundViewNameHotel = UIView().backgroundViewCell
@@ -49,9 +51,10 @@ final class OrderParametersHeader: UITableViewHeaderFooterView {
     
     //MARK: Public methods
     
-    func setupHeader() {
-        self.nameHotel.setupData()
-        self.orderStack.setupStack()
+    func setupHeader(model: ReservationModelDecodable) {
+        self.nameHotel.setupData(rating: model.horating, descriptionRating: model.ratingName, nameHotel: model.hotelName, location: model.hotelAddress)
+        self.orderStack.setupStack(model: model)
+//        self.numberTextField.text = "+7"
     }
     
     //MARK: Private methods
@@ -72,8 +75,6 @@ final class OrderParametersHeader: UITableViewHeaderFooterView {
             self.backgroundViewNameHotel.topAnchor.constraint(equalTo: self.contentView.topAnchor, constant: 8),
             self.backgroundViewNameHotel.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor),
             self.backgroundViewNameHotel.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor),
-            ///
-//            self.backgroundViewNameHotel.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor),
             
             self.nameHotel.topAnchor.constraint(equalTo: self.backgroundViewNameHotel.topAnchor),
             self.nameHotel.leadingAnchor.constraint(equalTo: self.backgroundViewNameHotel.leadingAnchor),
@@ -86,7 +87,6 @@ final class OrderParametersHeader: UITableViewHeaderFooterView {
             
             self.buyerInformationBackgroundView.topAnchor.constraint(equalTo: self.orderStack.bottomAnchor, constant: 8),
             
-//            self.buyerInformationBackgroundView.topAnchor.constraint(equalTo: self.backgroundViewNameHotel.bottomAnchor, constant: 8),
             self.buyerInformationBackgroundView.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor),
             self.buyerInformationBackgroundView.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor),
             self.buyerInformationBackgroundView.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor, constant: -4),

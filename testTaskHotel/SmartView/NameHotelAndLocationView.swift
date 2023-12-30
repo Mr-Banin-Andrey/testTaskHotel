@@ -47,7 +47,11 @@ final class NameHotelAndLocationView: UIView {
         return $0
     }(UILabel())
     
-    private lazy var titleLabel = UILabel(state: .titleLabel)
+    private lazy var titleLabel: UILabel = {
+        $0.numberOfLines = 0
+        $0.textAlignment = .left
+        return $0
+    }(UILabel(state: .titleLabel))
     
     private lazy var locationLabel: UILabel = {
         $0.translatesAutoresizingMaskIntoConstraints = false
@@ -62,7 +66,6 @@ final class NameHotelAndLocationView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        self.heightAnchor.constraint(equalToConstant: 120).isActive = true
         self.translatesAutoresizingMaskIntoConstraints = false
         self.setupUI()
     }
@@ -73,13 +76,12 @@ final class NameHotelAndLocationView: UIView {
     
     //MARK: Public methods
     
-    func setupData() {
-        self.numberLabel.text = "5"
-        self.descriptionLabel.text = "Превосходно"
-        self.titleLabel.text = "Steigenberger Makadi"
-        self.locationLabel.text = "Madinat Makadi, Safaga Road, Makadi Bay, Египет"
+    func setupData(rating: Int, descriptionRating: String, nameHotel: String, location: String) {
+        self.numberLabel.text = String(rating)
+        self.descriptionLabel.text = descriptionRating
+        self.titleLabel.text = nameHotel
+        self.locationLabel.text = location
     }
-    
     
     //MARK: Private methods
     
@@ -100,6 +102,7 @@ final class NameHotelAndLocationView: UIView {
             
             self.titleLabel.topAnchor.constraint(equalTo: self.ratingHotelStackView.bottomAnchor, constant: 8),
             self.titleLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 16),
+            self.titleLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -16),
             
             self.locationLabel.topAnchor.constraint(equalTo: self.titleLabel.bottomAnchor, constant: 8),
             self.locationLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 16),
