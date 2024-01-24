@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import TTGTags
 
 //MARK: - RoomCellDelegate
 
@@ -69,9 +68,9 @@ final class RoomCell: UITableViewCell {
     private lazy var selectHotelButton = CustomBlueButton(
         title: "Выбрать номер",
         titleColor: .buttonTextColor,
-        backgroundColor: .buttonColor,
-        action: actionButton
-    )
+        backgroundColor: .buttonColor) {
+            self.delegate?.bookRoom()
+        }
     
     private lazy var advantagesRoomViewheightAnchor35 = self.advantagesRoomView.heightAnchor.constraint(equalToConstant: 35)
     private lazy var advantagesRoomViewheightAnchor70 = self.advantagesRoomView.heightAnchor.constraint(equalToConstant: 70)
@@ -95,7 +94,7 @@ final class RoomCell: UITableViewCell {
     func setupCell(model: RoomModel) {
         self.galleryPhotoRoomView.setup(model.images.compactMap({ UIImage(data: $0) }))
         self.titleLabel.text = model.name
-        self.advantagesRoomView.setupAdvantages(model.peculiarities)
+        self.advantagesRoomView.setup(model.peculiarities)
         self.priceView.setupView(UsefulMethods().formatNumber(model.price), model.pricePer, .ruble)
         
         if model.peculiarities.count > 2 {
@@ -103,9 +102,7 @@ final class RoomCell: UITableViewCell {
         } else {
             advantagesRoomViewheightAnchor35.isActive = true
         }
-        
-    }
-    
+    }    
     
     //MARK: Private methods
     
@@ -123,13 +120,13 @@ final class RoomCell: UITableViewCell {
         
         NSLayoutConstraint.activate([
             self.backgroundCell.topAnchor.constraint(equalTo: self.contentView.topAnchor, constant: 4),
-            self.backgroundCell.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: 0),
-            self.backgroundCell.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor, constant: 0),
+            self.backgroundCell.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor),
+            self.backgroundCell.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor),
             self.backgroundCell.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor, constant: -4),
             
             self.galleryPhotoRoomView.topAnchor.constraint(equalTo: self.backgroundCell.topAnchor, constant: 16),
-            self.galleryPhotoRoomView.leadingAnchor.constraint(equalTo: self.backgroundCell.leadingAnchor, constant: 0),
-            self.galleryPhotoRoomView.trailingAnchor.constraint(equalTo: self.backgroundCell.trailingAnchor, constant: 0),
+            self.galleryPhotoRoomView.leadingAnchor.constraint(equalTo: self.backgroundCell.leadingAnchor),
+            self.galleryPhotoRoomView.trailingAnchor.constraint(equalTo: self.backgroundCell.trailingAnchor),
             
             self.titleLabel.topAnchor.constraint(equalTo: self.galleryPhotoRoomView.bottomAnchor, constant: 8),
             self.titleLabel.leadingAnchor.constraint(equalTo: self.backgroundCell.leadingAnchor, constant: 16),
@@ -142,7 +139,7 @@ final class RoomCell: UITableViewCell {
             self.arrowImage.heightAnchor.constraint(equalToConstant: 20),
             self.arrowImage.widthAnchor.constraint(equalToConstant: 20),
             
-            self.detailAboutRoomStackView.topAnchor.constraint(equalTo: self.advantagesRoomView.bottomAnchor, constant: 0),
+            self.detailAboutRoomStackView.topAnchor.constraint(equalTo: self.advantagesRoomView.bottomAnchor, constant: 8),
             self.detailAboutRoomStackView.leadingAnchor.constraint(equalTo: self.backgroundCell.leadingAnchor, constant: 16),
             
             self.priceView.topAnchor.constraint(equalTo: self.detailAboutRoomStackView.bottomAnchor, constant: 16),
@@ -154,11 +151,5 @@ final class RoomCell: UITableViewCell {
             self.selectHotelButton.trailingAnchor.constraint(equalTo: self.backgroundCell.trailingAnchor, constant: -16),
             self.selectHotelButton.bottomAnchor.constraint(equalTo: self.backgroundCell.bottomAnchor, constant: -16),
         ])
-    }
-    
-    //MARK: objc methods
-    
-    @objc private func actionButton() {
-        delegate?.bookRoom()
     }
 }

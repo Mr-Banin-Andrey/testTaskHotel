@@ -70,11 +70,6 @@ final class RoomViewController: UIViewController {
     }
     
     private func setupNavigationBar() {
-        let navBarAppearance = UINavigationBarAppearance()
-        navBarAppearance.backgroundColor = .backgroundViewOrCellColor
-        navBarAppearance.titleTextAttributes = [.foregroundColor: UIColor.mainTextColor]
-        self.navigationController?.navigationBar.standardAppearance = navBarAppearance
-        self.navigationController?.navigationBar.scrollEdgeAppearance = navBarAppearance
         self.navigationItem.title = nameHotel
         let backBarButton = UIBarButtonItem()
         backBarButton.title = nil

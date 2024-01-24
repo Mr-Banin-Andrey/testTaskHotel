@@ -6,12 +6,11 @@
 //
 
 import Foundation
-import UIKit.UIImage
 
 protocol DataConverterProtocol: AnyObject {
     func hotelModelConvert(model: HotelModelDecodable, data: [Data]) -> HotelModel
     func roomModelConvert(model: RoomModelDecodable, data: [Data]) -> RoomModel
-    
+    func roomsToRoomConvert(model: RoomsModelDecodable) -> [RoomModelDecodable]
 }
 
 final class DataConverter {
@@ -40,5 +39,9 @@ extension DataConverter: DataConverterProtocol {
                          pricePer: model.pricePer,
                          peculiarities: model.peculiarities,
                          images: data)
+    }
+    
+    func roomsToRoomConvert(model: RoomsModelDecodable) -> [RoomModelDecodable] {
+        return model.rooms
     }
 }

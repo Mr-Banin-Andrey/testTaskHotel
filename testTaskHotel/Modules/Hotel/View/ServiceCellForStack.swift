@@ -68,7 +68,7 @@ final class ServiceCellForStack: UIView {
             self.serviceImage.centerYAnchor.constraint(equalTo: self.centerYAnchor),
             self.serviceImage.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 15),
             
-            self.titleServiceLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 0),
+            self.titleServiceLabel.topAnchor.constraint(equalTo: self.topAnchor),
             self.titleServiceLabel.leadingAnchor.constraint(equalTo: self.serviceImage.trailingAnchor, constant: 12),
             
             self.explanationLabel.topAnchor.constraint(equalTo: self.titleServiceLabel.bottomAnchor, constant: 2),

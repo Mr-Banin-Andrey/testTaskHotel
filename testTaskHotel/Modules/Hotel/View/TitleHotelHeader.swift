@@ -55,20 +55,20 @@ final class TitleHotelHeader: UITableViewHeaderFooterView {
         self.backgroundHeader.addSubview(self.price)
         
         NSLayoutConstraint.activate([
-            self.backgroundHeader.topAnchor.constraint(equalTo: self.contentView.topAnchor, constant: -10),
-            self.backgroundHeader.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: 0),
-            self.backgroundHeader.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor, constant: 0),
-            self.backgroundHeader.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor, constant: -4),
+            self.backgroundHeader.topAnchor.constraint(equalTo: self.contentView.topAnchor),
+            self.backgroundHeader.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor),
+            self.backgroundHeader.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor),
+            self.backgroundHeader.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor),
                         
             self.galleryPhoto.topAnchor.constraint(equalTo: self.backgroundHeader.topAnchor, constant: 10),
-            self.galleryPhoto.leadingAnchor.constraint(equalTo: self.backgroundHeader.leadingAnchor, constant: 0),
-            self.galleryPhoto.trailingAnchor.constraint(equalTo: self.backgroundHeader.trailingAnchor, constant: 0),
+            self.galleryPhoto.leadingAnchor.constraint(equalTo: self.backgroundHeader.leadingAnchor),
+            self.galleryPhoto.trailingAnchor.constraint(equalTo: self.backgroundHeader.trailingAnchor),
             
-            self.nameHotel.topAnchor.constraint(equalTo: self.galleryPhoto.bottomAnchor, constant: 0),
-            self.nameHotel.leadingAnchor.constraint(equalTo: self.backgroundHeader.leadingAnchor, constant: 0),
-            self.nameHotel.trailingAnchor.constraint(equalTo: self.backgroundHeader.trailingAnchor, constant: 0),
+            self.nameHotel.topAnchor.constraint(equalTo: self.galleryPhoto.bottomAnchor),
+            self.nameHotel.leadingAnchor.constraint(equalTo: self.backgroundHeader.leadingAnchor),
+            self.nameHotel.trailingAnchor.constraint(equalTo: self.backgroundHeader.trailingAnchor),
             
-            self.price.topAnchor.constraint(equalTo: self.nameHotel.bottomAnchor, constant: 0),
+            self.price.topAnchor.constraint(equalTo: self.nameHotel.bottomAnchor),
             self.price.leadingAnchor.constraint(equalTo: self.backgroundHeader.leadingAnchor, constant: 16),
             self.price.trailingAnchor.constraint(equalTo: self.backgroundHeader.trailingAnchor, constant: -16),
             self.price.bottomAnchor.constraint(equalTo: self.backgroundHeader.bottomAnchor, constant: -16),

@@ -49,9 +49,9 @@ final class OrderPaidView: UIView {
     private lazy var blueButton = CustomBlueButton(
         title: "Супер!",
         titleColor: .buttonTextColor,
-        backgroundColor: .buttonColor,
-        action: actionBlueButton
-    )
+        backgroundColor: .buttonColor) {
+            self.delegate?.closeDeal()
+        }
     
     //MARK: Initial
     
@@ -105,11 +105,5 @@ final class OrderPaidView: UIView {
             self.blueButton.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor, constant: -16),
             self.blueButton.bottomAnchor.constraint(equalTo: self.safeAreaLayoutGuide.bottomAnchor, constant: -6),
         ])
-    }
-    
-    //MARK: @objc methods
-    
-    @objc private func actionBlueButton() {
-        delegate?.closeDeal()
     }
 }

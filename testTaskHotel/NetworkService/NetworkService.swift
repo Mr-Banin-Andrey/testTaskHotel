@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import UIKit.UIImage
 
 enum Constants {
     static let hotelApi = "https://run.mocky.io/v3/d144777c-a67f-4e35-867a-cacc3b827473"
@@ -14,71 +13,82 @@ enum Constants {
     static let reservationApi = "https://run.mocky.io/v3/63866c74-d593-432c-af8e-f279d1a8d2ff"
 }
 
+
 protocol NetworkServiceProtocol: AnyObject {
-    func fetch<T>(url: String, completion: @escaping(Result<T, NetworkError>) -> Void) where T: Decodable
-    func loadImage(url: String, completion: @escaping (Data) -> Void)
-    
-    func getRooms(url: String) async throws -> [RoomModelDecodable]
-    func getRoomImages(roomDecodable: RoomModelDecodable) async throws -> [Data]
+    func fetchData<T: Decodable>(url: String, model: T.Type) async throws -> T
+    func loadImage(url: String) async throws -> Data
 }
+
 
 final class NetworkService { }
 
+
 extension NetworkService: NetworkServiceProtocol {
     
-    func getRooms(url: String) async throws -> [RoomModelDecodable] {
+    func fetchData<T: Decodable>(url: String, model: T.Type) async throws -> T {
         guard let url = URL(string: url) else {
-            return []
+            throw NetworkError.invalidURL
         }
-        let (data, _) = try await URLSession.shared.data(from: url)
-        let rooms = try JSONDecoder().decode(RoomsModelDecodable.self, from: data)
-        return rooms.rooms
-    }
+                
+        let (data, response) = try await URLSession.shared.data(from: url)
         
-    func getRoomImages(roomDecodable: RoomModelDecodable) async throws -> [Data] {
-        var imagesData: [Data] = []
-        for url in roomDecodable.images {
-            let (data, _) = try await URLSession.shared.data(from: URL(string: url)!)
-            imagesData.append(data)
+        guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
+            throw NetworkError.invalidServer
         }
-        return imagesData
+        
+        do {
+            let rooms = try JSONDecoder().decode(T.self, from: data)
+            return rooms
+        } catch {
+            throw NetworkError.parse
+        }
     }
     
+    func loadImage(url: String) async throws -> Data {
+        return await withCheckedContinuation { [weak self] continuation in
+            self?.loadImageUrlSessionDataTask(url: url) { (result: Result<Data, NetworkError>) in
+                switch result {
+                case .success(let data):
+                    print(data)
+                    continuation.resume(returning: data)
+                case .failure(let error):
+                    print(error)
+                }
+            }
+        }
+    }
     
-    func loadImage(url: String, completion: @escaping (Data) -> Void) {
+    private func loadImageUrlSessionDataTask(url: String, completion: @escaping (Result<Data, NetworkError>) -> Void) {
         guard let url = URL(string: url) else { return }
-        URLSession.shared.dataTask(with: url) { data, response, error in
-            print("loaded")
-            guard let data = data else { return }
-            completion(data)
-        }.resume()
-    }
-    
-    func fetch<T>(url: String, completion: @escaping(Result<T, NetworkError>) -> Void) where T: Decodable {
-        guard let url = URL(string: url) else {
-            return
-        }
         
-        var urlRequest = URLRequest(url: url)
-        urlRequest.httpMethod = "GET"
-        URLSession.shared.dataTask(with: urlRequest) { data, response, error in
-            if let error = error {
-                completion(.failure(.server(reason: error.localizedDescription)))
+        let config = URLSessionConfiguration.default
+        config.timeoutIntervalForRequest = 10
+        let session = URLSession(configuration: config)
+        session.dataTask(with: url) { data, response, error in
+            if error != nil {
+                completion(.failure(.invalidServer))
                 return
             }
-
-            guard let data = data else {
+            
+            guard let data = data, let response = response as? HTTPURLResponse else {
                 completion(.failure(.unknown))
                 return
             }
-
-            do {
-                let news = try JSONDecoder().decode(T.self, from: data)
-                
-                completion(.success(news))
-            } catch let error {
-                completion(.failure(.parse(error.localizedDescription)))
+            
+            switch response.statusCode {
+            case 200...299:
+                print("200...299 Запрос пользователя успешно получен, принят и обработан.")
+            case 300...399:
+                print("300...399 Для выполнения запроса пользователю необходимо выполнить дополнительное действие.")
+            case 400...499:
+                print("400...499 Запрос пользователя не выполнен, так как он содержит синтаксическую ошибку или возникла иная неполадка клиента. ")
+            case 500...600:
+                print("500...600 Запрос пользователя корректен, однако он не был выполнен из-за ошибки сервера. ")
+            default:
+                print("error")
             }
+            
+            completion(.success(data))
         }.resume()
     }
 }

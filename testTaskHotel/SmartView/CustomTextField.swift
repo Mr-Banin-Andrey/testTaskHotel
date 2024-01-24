@@ -19,6 +19,9 @@ final class CustomTextField: UITextField {
     
     // MARK: Private properties
     
+    typealias Action = (String) -> Void
+    var buttonAction: Action
+    
     private var edgeInsets = UIEdgeInsets()
     private var title: String?
     private var shownText: String?
@@ -50,11 +53,13 @@ final class CustomTextField: UITextField {
         titleOrPlaceholder: String? = nil,
         text: String? = nil,
         mode: Mode,
-        keyboardType: UIKeyboardType = .default
+        keyboardType: UIKeyboardType = .default,
+        getText: @escaping Action
     ) {
         self.title = titleOrPlaceholder
         self.shownText = text
         self.mode = mode
+        self.buttonAction = getText
         super.init(frame: .zero)
         
         self.keyboardType = keyboardType
@@ -95,6 +100,7 @@ final class CustomTextField: UITextField {
     }
     
     // MARK: Private methods
+    
     private func setupMode(_ mode: Mode) {
         switch mode {
         case .withTitle:
@@ -125,6 +131,7 @@ final class CustomTextField: UITextField {
         
         self.addTarget(self, action: #selector(self.addFloatingLabel), for: .editingDidBegin)
         self.addTarget(self, action: #selector(self.removeFloatingLabel), for: .editingDidEnd)
+        self.addTarget(self, action: #selector(getText), for: .editingDidEnd)
     }
     
     private func setupConstraints() {
@@ -171,4 +178,10 @@ final class CustomTextField: UITextField {
         }
     }
     
+    @objc private func getText() {
+        guard let text = self.text else {
+            return
+        }
+        buttonAction(text)
+    }
 }

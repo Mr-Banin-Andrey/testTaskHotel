@@ -53,11 +53,6 @@ final class OrderPaidViewController: UIViewController {
     //MARK: Private methods
     
     private func setupNavigationBar() {
-        let navBarAppearance = UINavigationBarAppearance()
-        navBarAppearance.backgroundColor = .backgroundViewOrCellColor
-        navBarAppearance.titleTextAttributes = [.foregroundColor: UIColor.mainTextColor]
-        self.navigationController?.navigationBar.standardAppearance = navBarAppearance
-        self.navigationController?.navigationBar.scrollEdgeAppearance = navBarAppearance
         self.navigationItem.title = "Заказ оплачен"
         let backBarButton = UIBarButtonItem()
         backBarButton.title = nil

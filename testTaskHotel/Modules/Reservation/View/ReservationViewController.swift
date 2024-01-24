@@ -68,11 +68,6 @@ final class ReservationViewController: UIViewController {
     //MARK: Private methods
     
     private func setupNavigationBar() {
-        let navBarAppearance = UINavigationBarAppearance()
-        navBarAppearance.backgroundColor = .backgroundViewOrCellColor
-        navBarAppearance.titleTextAttributes = [.foregroundColor: UIColor.mainTextColor]
-        self.navigationController?.navigationBar.standardAppearance = navBarAppearance
-        self.navigationController?.navigationBar.scrollEdgeAppearance = navBarAppearance
         self.navigationItem.title = "Бронирование"
         let backBarButton = UIBarButtonItem()
         backBarButton.title = nil
@@ -84,7 +79,12 @@ final class ReservationViewController: UIViewController {
 //MARK: - ReservationViewDelegate
 
 extension ReservationViewController: ReservationViewDelegate {
+    func showAlert() {
+        reservationView.presentAlert(controller: self, title: "Заполните все поля", textButton: "Попробовать ещё раз")
+    }
+    
     func goToPay() {
         viewModel.updateState(viewInput: .payForTour)
     }
+    
 }

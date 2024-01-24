@@ -62,15 +62,15 @@ final class PriceView: UIView {
         self.addSubview(self.priceDescriptionLabel)
         
         NSLayoutConstraint.activate([
-            self.priceLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 0),
-            self.priceLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 0),
-            self.priceLabel.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: 0),
+            self.priceLabel.topAnchor.constraint(equalTo: self.topAnchor),
+            self.priceLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor),
+            self.priceLabel.bottomAnchor.constraint(equalTo: self.bottomAnchor),
             
-            self.currencyLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 0),
+            self.currencyLabel.topAnchor.constraint(equalTo: self.topAnchor),
             self.currencyLabel.leadingAnchor.constraint(equalTo: self.priceLabel.trailingAnchor, constant: 6),
             
             self.priceDescriptionLabel.leadingAnchor.constraint(equalTo: self.currencyLabel.trailingAnchor, constant: 8),
-            self.priceDescriptionLabel.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: 0),
+            self.priceDescriptionLabel.bottomAnchor.constraint(equalTo: self.bottomAnchor),
         ])
     }
     

@@ -22,6 +22,13 @@ final class TouristCell: UITableViewCell {
     static let reuseID = "TouristCellID"
     
     weak var delegate: TouristCellDelegate?
+        
+    var isFirstNameTextAction: ((String) -> Void)?
+    var isLastNameTextAction: ((String) -> Void)?
+    var isBirthdayTextAction: ((String) -> Void)?
+    var isCitizenshipTextAction: ((String) -> Void)?
+    var isPassportNumberTextAction: ((String) -> Void)?
+    var isPassportValidityPeriodTextAction: ((String) -> Void)?
     
     //MARK: Properties
     
@@ -40,12 +47,24 @@ final class TouristCell: UITableViewCell {
     }(UIImageView())
     
     private lazy var dataStackView = UIStackView().dataStackView
-    private lazy var firstNameTextField = CustomTextField(titleOrPlaceholder: "Имя", mode: .onlyPlaceholder)
-    private lazy var lastNameTextField = CustomTextField(titleOrPlaceholder: "Фамилия", mode: .onlyPlaceholder)
-    private lazy var birthdayTextField = CustomTextField(titleOrPlaceholder: "Дата рождения", mode: .onlyPlaceholder)
-    private lazy var citizenshipTextField = CustomTextField(titleOrPlaceholder: "Гражданство", mode: .onlyPlaceholder)
-    private lazy var passportNumberTextField = CustomTextField(titleOrPlaceholder: "Номер загранпаспорта", mode: .onlyPlaceholder, keyboardType: .default)
-    private lazy var passportValidityPeriodTextField = CustomTextField(titleOrPlaceholder: "Срок действия загранпаспорта", mode: .onlyPlaceholder)
+    private lazy var firstNameTextField = CustomTextField(titleOrPlaceholder: "Имя", mode: .onlyPlaceholder) { text in
+        self.isFirstNameTextAction?(text)
+    }
+    private lazy var lastNameTextField = CustomTextField(titleOrPlaceholder: "Фамилия", mode: .onlyPlaceholder) { text in
+        self.isLastNameTextAction?(text)
+    }
+    private lazy var birthdayTextField = CustomTextField(titleOrPlaceholder: "Дата рождения", mode: .onlyPlaceholder) { text in
+        self.isBirthdayTextAction?(text)
+    }
+    private lazy var citizenshipTextField = CustomTextField(titleOrPlaceholder: "Гражданство", mode: .onlyPlaceholder) { text in
+        self.isCitizenshipTextAction?(text)
+    }
+    private lazy var passportNumberTextField = CustomTextField(titleOrPlaceholder: "Номер загранпаспорта", mode: .onlyPlaceholder, keyboardType: .default) { text in
+        self.isPassportNumberTextAction?(text)
+    }
+    private lazy var passportValidityPeriodTextField = CustomTextField(titleOrPlaceholder: "Срок действия загранпаспорта", mode: .onlyPlaceholder) { text in
+        self.isPassportValidityPeriodTextAction?(text)
+    }
     
     private lazy var dataStackViewBottomConstraint = self.dataStackView.bottomAnchor.constraint(equalTo: self.backgroundCell.bottomAnchor, constant: -16)
     private lazy var titleLabelBottomConstraint = self.titleLabel.bottomAnchor.constraint(equalTo: self.backgroundCell.bottomAnchor, constant: -16)
@@ -134,8 +153,8 @@ final class TouristCell: UITableViewCell {
         
         NSLayoutConstraint.activate([
             self.backgroundCell.topAnchor.constraint(equalTo: self.contentView.topAnchor, constant: 4),
-            self.backgroundCell.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: 0),
-            self.backgroundCell.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor, constant: 0),
+            self.backgroundCell.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor),
+            self.backgroundCell.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor),
             self.backgroundCell.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor, constant: -4),
             
             self.titleLabel.topAnchor.constraint(equalTo: self.backgroundCell.topAnchor, constant: 16),

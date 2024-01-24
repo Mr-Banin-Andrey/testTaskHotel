@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 //MARK: - HotelViewModelProtocol
 
@@ -58,26 +59,19 @@ final class HotelViewModel: HotelViewModelProtocol {
 
         case .willLoadHotel:
             state = .loadHotel
-            let downloadGroup = DispatchGroup()
-            self.networkService.fetch(url: Constants.hotelApi) { [weak self] (result: Result <HotelModelDecodable, NetworkError>) in
-                guard let self = self else { return }
-                switch result {
-                case .success(let hotelDecodable):
-                    var imagesData: [Data] = []
-                    hotelDecodable.images.forEach { image in
-                        downloadGroup.enter()
-                        self.networkService.loadImage(url: image) { [weak self] data in
-                            guard let self = self else { return }
-                            imagesData.append(data)
-                            downloadGroup.leave()
-                        }
+            Task {
+                var imagesData = [Data]()
+                do {
+                    let hotelDecodable = try await networkService.fetchData(url: Constants.hotelApi, model: HotelModelDecodable.self)
+                    for imageUrl in hotelDecodable.images {
+                        let pictures = try await networkService.loadImage(url: imageUrl)
+                        imagesData.append(pictures)
                     }
-                    downloadGroup.notify(queue: .main) {
-                        let hotel = DataConverter().hotelModelConvert(model: hotelDecodable, data: imagesData)
-                        self.state = .loadedHotel(hotel: hotel)
-                    }
-                case .failure(let error):
-                    print("error", error)
+                    
+                    let hotel = DataConverter().hotelModelConvert(model: hotelDecodable, data: imagesData)
+                    self.state = .loadedHotel(hotel: hotel)
+                } catch NetworkError.invalidServer {
+                    print(">>>>> Ошибка сервера")
                 }
             }
         }

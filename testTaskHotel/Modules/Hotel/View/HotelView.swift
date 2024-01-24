@@ -35,9 +35,9 @@ final class HotelView: UIView {
     private lazy var selectHotelButton = CustomBlueButton(
         title: "К выбору номера",
         titleColor: .buttonTextColor,
-        backgroundColor: .buttonColor,
-        action: actionButton
-    )
+        backgroundColor: .buttonColor) {
+            self.delegate?.showRoom()
+        }
     
     private lazy var lineView = UIView().lineViewTabBar
     private lazy var activityIndicator = UIActivityIndicatorView().activityIndicatorView
@@ -103,25 +103,19 @@ final class HotelView: UIView {
             self.activityIndicator.centerXAnchor.constraint(equalTo: centerXAnchor),
             self.activityIndicator.centerYAnchor.constraint(equalTo: centerYAnchor),
             
-            self.tableView.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 0),
-            self.tableView.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor, constant: 0),
-            self.tableView.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor, constant: 0),
+            self.tableView.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor),
+            self.tableView.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor),
+            self.tableView.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor),
             
-            self.lineView.topAnchor.constraint(equalTo: self.tableView.bottomAnchor, constant: 0),
-            self.lineView.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor, constant: 0),
-            self.lineView.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor, constant: 0),
+            self.lineView.topAnchor.constraint(equalTo: self.tableView.bottomAnchor),
+            self.lineView.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor),
+            self.lineView.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor),
             
-            self.selectHotelButton.topAnchor.constraint(equalTo: self.tableView.bottomAnchor, constant: 12),
+            self.selectHotelButton.topAnchor.constraint(equalTo: self.lineView.bottomAnchor, constant: 12),
             self.selectHotelButton.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor, constant: 16),
             self.selectHotelButton.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor, constant: -16),
             self.selectHotelButton.bottomAnchor.constraint(equalTo: self.safeAreaLayoutGuide.bottomAnchor, constant: -6),
         ])
-    }
-    
-    //MARK: objc methods
-    
-    @objc private func actionButton() {
-        delegate?.showRoom()
     }
 }
 
@@ -135,9 +129,9 @@ extension HotelView: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        guard
-            let cell = tableView.dequeueReusableCell(withIdentifier: DescriptionHotelCell.reuseID, for: indexPath) as? DescriptionHotelCell
-        else { return UITableViewCell() }
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: DescriptionHotelCell.reuseID, for: indexPath) as? DescriptionHotelCell else {
+            return UITableViewCell()
+        }
         
         cell.setupCell(model: hotel)
         return cell
@@ -156,5 +150,13 @@ extension HotelView: UITableViewDelegate {
         
         header.setupHeader(model: hotel)
         return header
+    }
+    
+    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 550
+    }
+    
+    func tableView(_ tableView: UITableView, estimatedHeightForHeaderInSection section: Int) -> CGFloat {
+        return 490
     }
 }

@@ -8,17 +8,19 @@
 import Foundation
 
 enum NetworkError: Error {
-    case server(reason: String)
-    case parse(String)
-    case encode(String)
+    case invalidURL
+    case invalidServer
+    case parse
     case unknown
     
     var debugDescription: String {
         switch self {
-        case .server(let reason):
-            return "Ошибка сервера: \(reason)"
-        case let .parse(description), let .encode(description):
-            return "Ошибка парсинга данных: \(description)"
+        case .invalidURL:
+            return "Невалидный URL"
+        case .invalidServer:
+            return "Ошибка сервера"
+        case .parse:
+            return "Ошибка парсинга данных"
         case .unknown:
             return "Неизвестная ошибка"
         }

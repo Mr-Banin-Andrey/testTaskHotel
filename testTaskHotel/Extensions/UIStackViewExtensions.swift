@@ -19,7 +19,6 @@ extension UIStackView {
     var dataStackView: UIStackView {
         self.translatesAutoresizingMaskIntoConstraints = false
         self.spacing = 8
-        self.alignment = .fill
         self.axis = .vertical
         return self
     }

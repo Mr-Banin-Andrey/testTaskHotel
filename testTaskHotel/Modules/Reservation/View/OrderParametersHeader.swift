@@ -11,7 +11,8 @@ final class OrderParametersHeader: UITableViewHeaderFooterView {
     
     static let reuseID = "OrderParametersHeaderID"
     
-    var tapAction: ((Bool) -> Void)?
+    var isNumberTextAction: ((String) -> Void)?
+    var isEmailTextAction: ((String) -> Void)?
     
     //MARK: Properties
     
@@ -24,8 +25,12 @@ final class OrderParametersHeader: UITableViewHeaderFooterView {
     private lazy var buyerTitle = UILabel(text: "Информация о покупателе", state: .titleLabel)
     private lazy var buyerStack = UIStackView().dataStackView
     
-    private lazy var numberTextField = CustomTextField(titleOrPlaceholder: "Номер телефона", mode: .onlyPlaceholder, keyboardType: .phonePad)
-    private lazy var emailTextField = CustomTextField(titleOrPlaceholder: "Почта", mode: .onlyPlaceholder, keyboardType: .emailAddress)
+    private lazy var numberTextField = CustomTextField(titleOrPlaceholder: "Номер телефона", mode: .onlyPlaceholder, keyboardType: .phonePad) { text in
+        self.isNumberTextAction?(text)
+    }
+    private lazy var emailTextField = CustomTextField(titleOrPlaceholder: "Почта", mode: .onlyPlaceholder, keyboardType: .emailAddress) { text in
+        self.isEmailTextAction?(text)
+    }
     
     private lazy var informationForBuyerLabel: UILabel = {
         $0.translatesAutoresizingMaskIntoConstraints = false

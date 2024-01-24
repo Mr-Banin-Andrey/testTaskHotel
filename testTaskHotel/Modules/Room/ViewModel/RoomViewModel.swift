@@ -60,15 +60,31 @@ final class RoomViewModel: RoomViewModelProtocol {
             coordinator?.setupReservation()
         case .willLoadRoom:
             state = .loadingRooms
+            
             Task {
-                roomsDecodable = try await self.networkService.getRooms(url: Constants.roomsApi)
-                for room in roomsDecodable {
-                    let data = try await self.networkService.getRoomImages(roomDecodable: room)
-                    rooms.append(DataConverter().roomModelConvert(model: room, data: data))
+                var roomDecodable: [RoomModelDecodable] = []
+                do {
+                    let roomsDecodable = try await networkService.fetchData(url: Constants.roomsApi, model: RoomsModelDecodable.self)
+                    roomDecodable = DataConverter().roomsToRoomConvert(model: roomsDecodable)
+                } catch NetworkError.invalidServer {
+                    print(">>>>> Ошибка сервера")
                 }
-                state = .loadedRooms(rooms: rooms)
+                
+                var rooms: [RoomModel] = []
+                do {
+                    for room in roomDecodable {
+                        var imagesData: [Data] = []
+                        for imageUrl in room.images {
+                            let picture = try await networkService.loadImage(url: imageUrl)
+                            imagesData.append(picture)
+                        }
+                        rooms.append(DataConverter().roomModelConvert(model: room, data: imagesData))
+                    }
+                    self.state = .loadedRooms(rooms: rooms)
+                } catch {
+                    print(">>>>> \(error)")
+                }
             }
         }
     }
-    
 }

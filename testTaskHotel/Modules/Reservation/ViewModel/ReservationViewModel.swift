@@ -57,17 +57,15 @@ final class ReservationViewModel: ReservationViewModelProtocol {
             print("goingToBookRoom")
             
             state = .loadingData
-            self.networkService.fetch(url: Constants.reservationApi) { [weak self] (result: Result <ReservationModelDecodable, NetworkError>) in
-                guard let self = self else { return }
-                switch result {
-                case .success(let reservation):
-                    print(reservation)
+            
+            Task {
+                do {
+                    let reservation = try await networkService.fetchData(url: Constants.reservationApi, model: ReservationModelDecodable.self)
                     state = .loadedData(model: reservation)
-                case .failure(let error):
-                    print("error", error)
+                } catch NetworkError.invalidServer {
+                    print(">>>>> Ошибка сервера")
                 }
             }
         }
     }
-    
 }

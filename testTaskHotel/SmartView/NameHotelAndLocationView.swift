@@ -14,7 +14,7 @@ final class NameHotelAndLocationView: UIView {
     private lazy var ratingHotelStackView: UIStackView = {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.axis = .horizontal
-        $0.alignment = .fill
+        $0.distribution = .equalSpacing
         $0.spacing = 2
         $0.backgroundColor = .ratingBackgroungColor
         $0.layoutMargins = UIEdgeInsets(top: 5, left: 10, bottom: 5, right: 10)
