@@ -53,6 +53,7 @@ extension NetworkService: NetworkServiceProtocol {
                     continuation.resume(returning: data)
                 case .failure(let error):
                     print(error)
+                    continuation.resume(returning: Data())
                 }
             }
         }
